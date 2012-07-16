@@ -1,7 +1,6 @@
 package org.shortbrain.vaadin.container.property;
 
 import java.beans.PropertyDescriptor;
-import java.beans.Transient;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -12,8 +11,6 @@ import org.apache.commons.beanutils.PropertyUtils;
 /**
  * Implementation of {@link PropertyReaderAlgorithm} that looks for attribute of
  * the beanClass
- * 
- * The attribute annotated with {@link Transient} will be ignored.
  * 
  * @author Vincent Demeester <vincent@demeester.fr>
  * 
