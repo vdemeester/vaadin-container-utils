@@ -82,6 +82,10 @@ public final class ContainerUtils {
 	public static void addContainerProperty(Container container,
 			Object propertyName, Class<?> propertyClass,
 			Object propertyDefaultValue) {
+		if (propertyName == null || propertyClass == null) {
+			throw new NullPointerException(
+					"propertyName and propertyClass cannot be null.");
+		}
 		container.addContainerProperty(propertyName, propertyClass,
 				propertyDefaultValue);
 	}
