@@ -8,6 +8,7 @@ import static junit.framework.Assert.fail;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
+import org.shortbrain.vaadin.container.property.PropertyMetadata;
 
 import com.vaadin.data.Container;
 import com.vaadin.data.Container.Filterable;

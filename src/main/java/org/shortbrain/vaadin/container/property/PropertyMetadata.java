@@ -1,4 +1,4 @@
-package org.shortbrain.vaadin.container;
+package org.shortbrain.vaadin.container.property;
 
 /**
  * Metedata used to create a property of a Vaadin Container.

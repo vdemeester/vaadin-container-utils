@@ -1,5 +1,7 @@
 package org.shortbrain.vaadin.container;
 
+import org.shortbrain.vaadin.container.property.PropertyMetadata;
+
 import com.vaadin.data.Container;
 import com.vaadin.data.Container.Filterable;
 import com.vaadin.data.Container.Hierarchical;
