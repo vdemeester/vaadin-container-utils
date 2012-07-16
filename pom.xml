@@ -4,8 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.shortbrain.vaadin</groupId>
 	<artifactId>vaadin-container-utils</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
-    <url>http://vdemeester.github.com/vaadin-container-utils</url>
+	<version>0.1.0-SNAPSHOT</version>
+	<url>http://vdemeester.github.com/vaadin-container-utils</url>
 	<packaging>jar</packaging>
 
 	<build>
@@ -28,7 +28,7 @@
 		<dependency>
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin</artifactId>
-            <version>6.8.0</version>
+			<version>6.8.0</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -41,6 +41,11 @@
 			<artifactId>guava</artifactId>
 			<version>12.0</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.8.3</version>
 		</dependency>
 	</dependencies>
 </project>
