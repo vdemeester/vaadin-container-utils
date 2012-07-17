@@ -10,12 +10,15 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.BlockJUnit4ClassRunner;
 import org.shortbrain.vaadin.container.AbstractContainerUtilsTest;
 import org.shortbrain.vaadin.container.annotation.Container;
 import org.shortbrain.vaadin.container.annotation.ContainerType;
 import org.shortbrain.vaadin.container.annotation.Property;
 
 @SuppressWarnings("unused")
+@RunWith(BlockJUnit4ClassRunner.class)
 public class AnnotationReaderAlgorithmTest extends
 		AbstractContainerUtilsTest {
 
