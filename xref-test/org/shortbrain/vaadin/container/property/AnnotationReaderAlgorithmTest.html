@@ -29,28 +29,28 @@
 <a class="jxr_linenumber" name="19" href="#19">19</a>  
 <a class="jxr_linenumber" name="20" href="#20">20</a>  @SuppressWarnings(<span class="jxr_string">"unused"</span>)
 <a class="jxr_linenumber" name="21" href="#21">21</a>  @RunWith(BlockJUnit4ClassRunner.<strong class="jxr_keyword">class</strong>)
-<a class="jxr_linenumber" name="22" href="#22">22</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/shortbrain/vaadin/container/property/AnnotationReaderAlgorithmTest.html">AnnotationReaderAlgorithmTest</a> <strong class="jxr_keyword">extends</strong>
-<a class="jxr_linenumber" name="23" href="#23">23</a>  		AbstractContainerUtilsTest {
-<a class="jxr_linenumber" name="24" href="#24">24</a>  
-<a class="jxr_linenumber" name="25" href="#25">25</a>  	@Test
-<a class="jxr_linenumber" name="26" href="#26">26</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetPropertiesNull() {
-<a class="jxr_linenumber" name="27" href="#27">27</a>  		<strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="28" href="#28">28</a>  			AnnotationReaderAlgorithm a = <strong class="jxr_keyword">new</strong> AnnotationReaderAlgorithm(<strong class="jxr_keyword">null</strong>);
-<a class="jxr_linenumber" name="29" href="#29">29</a>  			fail(<span class="jxr_string">"should throw an IllegalArgumentException"</span>);
-<a class="jxr_linenumber" name="30" href="#30">30</a>  		} <strong class="jxr_keyword">catch</strong> (IllegalArgumentException e) {
-<a class="jxr_linenumber" name="31" href="#31">31</a>  			assertTrue(e instanceof IllegalArgumentException);
-<a class="jxr_linenumber" name="32" href="#32">32</a>  		}
-<a class="jxr_linenumber" name="33" href="#33">33</a>  	}
-<a class="jxr_linenumber" name="34" href="#34">34</a>  
-<a class="jxr_linenumber" name="35" href="#35">35</a>  	@Test
-<a class="jxr_linenumber" name="36" href="#36">36</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetPropertiesNonAnnotated() {
-<a class="jxr_linenumber" name="37" href="#37">37</a>  		AnnotationReaderAlgorithm a = <strong class="jxr_keyword">new</strong> AnnotationReaderAlgorithm(
-<a class="jxr_linenumber" name="38" href="#38">38</a>  				ContainerType.RESUME);
-<a class="jxr_linenumber" name="39" href="#39">39</a>  		<strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="40" href="#40">40</a>  			a.getProperties(NonAnnotatedBean.<strong class="jxr_keyword">class</strong>);
-<a class="jxr_linenumber" name="41" href="#41">41</a>  		} <strong class="jxr_keyword">catch</strong> (IllegalArgumentException e) {
-<a class="jxr_linenumber" name="42" href="#42">42</a>  			assertTrue(e instanceof IllegalArgumentException);
-<a class="jxr_linenumber" name="43" href="#43">43</a>  			assertEquals(<span class="jxr_string">"the beanClass has to be annotated witch @Container."</span>,
+<a class="jxr_linenumber" name="22" href="#22">22</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/shortbrain/vaadin/container/property/AnnotationReaderAlgorithmTest.html">AnnotationReaderAlgorithmTest</a> <strong class="jxr_keyword">extends</strong> <a href="../../../../../org/shortbrain/vaadin/container/AbstractContainerUtilsTest.html">AbstractContainerUtilsTest</a> {
+<a class="jxr_linenumber" name="23" href="#23">23</a>  
+<a class="jxr_linenumber" name="24" href="#24">24</a>  	@Test
+<a class="jxr_linenumber" name="25" href="#25">25</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetPropertiesNull() {
+<a class="jxr_linenumber" name="26" href="#26">26</a>  		<strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="27" href="#27">27</a>  			AnnotationReaderAlgorithm a = <strong class="jxr_keyword">new</strong> AnnotationReaderAlgorithm(<strong class="jxr_keyword">null</strong>);
+<a class="jxr_linenumber" name="28" href="#28">28</a>  			fail(<span class="jxr_string">"should throw an IllegalArgumentException"</span>);
+<a class="jxr_linenumber" name="29" href="#29">29</a>  		} <strong class="jxr_keyword">catch</strong> (IllegalArgumentException e) {
+<a class="jxr_linenumber" name="30" href="#30">30</a>  			assertTrue(e instanceof IllegalArgumentException);
+<a class="jxr_linenumber" name="31" href="#31">31</a>  		}
+<a class="jxr_linenumber" name="32" href="#32">32</a>  	}
+<a class="jxr_linenumber" name="33" href="#33">33</a>  
+<a class="jxr_linenumber" name="34" href="#34">34</a>  	@Test
+<a class="jxr_linenumber" name="35" href="#35">35</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetPropertiesNonAnnotated() {
+<a class="jxr_linenumber" name="36" href="#36">36</a>  		AnnotationReaderAlgorithm a = <strong class="jxr_keyword">new</strong> AnnotationReaderAlgorithm(
+<a class="jxr_linenumber" name="37" href="#37">37</a>  				ContainerType.RESUME);
+<a class="jxr_linenumber" name="38" href="#38">38</a>  		<strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="39" href="#39">39</a>  			a.getProperties(NonAnnotatedBean.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="40" href="#40">40</a>  		} <strong class="jxr_keyword">catch</strong> (IllegalArgumentException e) {
+<a class="jxr_linenumber" name="41" href="#41">41</a>  			assertTrue(e instanceof IllegalArgumentException);
+<a class="jxr_linenumber" name="42" href="#42">42</a>  			assertEquals(
+<a class="jxr_linenumber" name="43" href="#43">43</a>  					<span class="jxr_string">"beanClass and its super classes are not annotated with Container."</span>,
 <a class="jxr_linenumber" name="44" href="#44">44</a>  					e.getMessage());
 <a class="jxr_linenumber" name="45" href="#45">45</a>  		}
 <a class="jxr_linenumber" name="46" href="#46">46</a>  	}
