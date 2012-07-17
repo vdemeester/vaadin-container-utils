@@ -64,7 +64,7 @@ public class BeanAbstractAnnotationReaderTest extends
 			fail("should throw an IllegalArgumentException");
 		} catch (IllegalArgumentException e) {
 			assertTrue(e instanceof IllegalArgumentException);
-			assertEquals("entityClass and annotationClass cannot be null.",
+			assertEquals("beanClass and annotationClass cannot be null.",
 					e.getMessage());
 		}
 		try {
@@ -73,7 +73,7 @@ public class BeanAbstractAnnotationReaderTest extends
 			fail("should throw an IllegalArgumentException");
 		} catch (IllegalArgumentException e) {
 			assertTrue(e instanceof IllegalArgumentException);
-			assertEquals("entityClass and annotationClass cannot be null.",
+			assertEquals("beanClass and annotationClass cannot be null.",
 					e.getMessage());
 		}
 		try {
@@ -82,7 +82,7 @@ public class BeanAbstractAnnotationReaderTest extends
 			fail("should throw an IllegalArgumentException");
 		} catch (IllegalArgumentException e) {
 			assertTrue(e instanceof IllegalArgumentException);
-			assertEquals("entityClass and annotationClass cannot be null.",
+			assertEquals("beanClass and annotationClass cannot be null.",
 					e.getMessage());
 		}
 	}
@@ -96,7 +96,7 @@ public class BeanAbstractAnnotationReaderTest extends
 		} catch (IllegalArgumentException e) {
 			assertTrue(e instanceof IllegalArgumentException);
 			assertEquals(
-					"entityClass and its super classes are not annotated with SimpleAnnotation.",
+					"beanClass and its super classes are not annotated with SimpleAnnotation.",
 					e.getMessage());
 		}
 	}
