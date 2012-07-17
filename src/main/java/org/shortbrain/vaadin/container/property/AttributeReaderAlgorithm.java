@@ -1,12 +1,10 @@
 package org.shortbrain.vaadin.container.property;
 
-import java.beans.PropertyDescriptor;
+import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
-
-import org.apache.commons.beanutils.PropertyUtils;
 
 /**
  * Implementation of {@link PropertyReaderAlgorithm} that looks for attribute of
@@ -18,30 +16,91 @@ import org.apache.commons.beanutils.PropertyUtils;
 public class AttributeReaderAlgorithm implements PropertyReaderAlgorithm {
 
 	/**
+	 * Constant for default valuer of withSuper attribute.
+	 */
+	private static final boolean DEFAULT_WITHSUPER = true;
+	private static final List<String> DEFAULT_IGNORED = Arrays
+			.asList(new String[] { "serialVersionUID" });
+
+	/**
 	 * List of attribute to ignore.
 	 */
 	private final Collection<String> ignoredAttributes;
+	private final boolean withSuper;
 
+	/**
+	 * Create an {@link AttributeReaderAlgorithm} with default ignored
+	 * attributes ("serialVersionUID") and with <code>super</code> class lookup.
+	 */
 	public AttributeReaderAlgorithm() {
-		this(Arrays.asList(new String[] { "serialVersionUID" }));
+		this(DEFAULT_IGNORED, DEFAULT_WITHSUPER);
 	}
 
+	/**
+	 * Create an {@link AttributeReaderAlgorithm} with default ignored
+	 * attributes ("serialVersionUID").
+	 * 
+	 * @param withSuper
+	 *            look up for <code>super</class> class.
+	 */
+	public AttributeReaderAlgorithm(boolean withSuper) {
+		this(DEFAULT_IGNORED, withSuper);
+	}
+
+	/**
+	 * Create an {@link AttributeReaderAlgorithm} with <code>super</code> class
+	 * lookup.
+	 * 
+	 * @param ignoredAttributes
+	 *            list of attributes to ignore.
+	 */
 	public AttributeReaderAlgorithm(Collection<String> ignoredAttributes) {
+		this(ignoredAttributes, DEFAULT_WITHSUPER);
+	}
+
+	/**
+	 * Create an {@link AttributeReaderAlgorithm}.
+	 * 
+	 * @param ignoredAttributes
+	 *            list of attributes to ignore.
+	 * @param withSuper
+	 *            look up for <code>super</class> class.
+	 */
+	public AttributeReaderAlgorithm(Collection<String> ignoredAttributes,
+			boolean withSuper) {
 		this.ignoredAttributes = ignoredAttributes;
+		this.withSuper = withSuper;
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
+	 * If the ignoredAttributes attribute is null, we won't fail, it will be
+	 * just as if it is an empty List.
+	 * 
+	 * @throw {@link IllegalArgumentException} if beanClass is null.
 	 */
 	@Override
 	public List<PropertyMetadata> getProperties(Class<?> beanClass) {
+		if (beanClass == null) {
+			throw new IllegalArgumentException("beanClass cannot be null.");
+		}
 		List<PropertyMetadata> metadatas = new LinkedList<PropertyMetadata>();
-		for (PropertyDescriptor propertyDescriptor : PropertyUtils
-				.getPropertyDescriptors(beanClass)) {
-			if (!ignoredAttributes.contains(propertyDescriptor.getName())) {
-				String propertyName = propertyDescriptor.getName();
-				Class<?> propertyClass = propertyDescriptor.getPropertyType();
-				String propertyAttribute = propertyDescriptor.getName();
+		List<Field> fields = new LinkedList<Field>();
+		fields.addAll(Arrays.asList(beanClass.getDeclaredFields()));
+		if (withSuper) {
+			Class<?> superClass = beanClass.getSuperclass();
+			while (superClass != Object.class) {
+				fields.addAll(Arrays.asList(superClass.getDeclaredFields()));
+				superClass = superClass.getSuperclass();
+			}
+		}
+		for (Field field : fields) {
+			if (ignoredAttributes == null
+					|| !ignoredAttributes.contains(field.getName())) {
+				String propertyName = field.getName();
+				Class<?> propertyClass = field.getType();
+				String propertyAttribute = field.getName();
 				PropertyMetadata metadata = new PropertyMetadata(propertyName,
 						propertyClass, null, propertyAttribute);
 				metadatas.add(metadata);

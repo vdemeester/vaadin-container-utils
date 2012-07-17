@@ -8,7 +8,6 @@ import java.lang.annotation.Annotation;
  * This currently only work on annotation for Type.
  * 
  * @author Vincent Demeester <vincent@demeester.fr>
- * @version 0.4.0
  * 
  */
 public abstract class BeanAbstractAnnotationReader<T> {
