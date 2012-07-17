@@ -23,7 +23,20 @@ public class AnnotationReaderAlgorithm implements PropertyReaderAlgorithm {
 	private final ContainerType containerType;
 	private Map<ContainerType, List<PropertyMetadata>> containersMeta;
 
+	/**
+	 * Create an {@link AnnotationReaderAlgorithm} with a {@link ContainerType}
+	 * specified.
+	 * 
+	 * If the containerType argument is null, it will throw an
+	 * {@link IllegalArgumentException}
+	 * 
+	 * @param containerType
+	 * @throws IllegalArgumentException
+	 */
 	public AnnotationReaderAlgorithm(ContainerType containerType) {
+		if (containerType == null) {
+			throw new IllegalArgumentException("containerType cannot be null.");
+		}
 		this.containerType = containerType;
 	}
 
@@ -50,6 +63,11 @@ public class AnnotationReaderAlgorithm implements PropertyReaderAlgorithm {
 			} catch (NoSuchFieldException e) {
 				// TODO Auto-generated catch block
 			}
+		}
+		if (containersMeta == null) {
+			// The beanClass passed is not annotated with Container
+			throw new IllegalArgumentException(
+					"the beanClass has to be annotated witch @Container.");
 		}
 		return containersMeta.get(containerType);
 	}

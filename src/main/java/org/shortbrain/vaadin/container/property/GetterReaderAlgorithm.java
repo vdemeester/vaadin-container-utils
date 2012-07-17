@@ -22,6 +22,9 @@ public class GetterReaderAlgorithm implements PropertyReaderAlgorithm {
 	 */
 	@Override
 	public List<PropertyMetadata> getProperties(Class<?> beanClass) {
+		if (beanClass == null) {
+			throw new IllegalArgumentException("beanClass cannot be null.");
+		}
 		List<PropertyMetadata> metadatas = new LinkedList<PropertyMetadata>();
 		for (Method method : beanClass.getDeclaredMethods()) {
 			if (Modifier.isPublic(method.getModifiers())

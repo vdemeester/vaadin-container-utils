@@ -23,7 +23,7 @@ import com.vaadin.data.util.IndexedContainer;
  * 
  */
 @RunWith(BlockJUnit4ClassRunner.class)
-public class ContainerUtilsTest {
+public class ContainerUtilsTest extends AbstractContainerUtilsTest {
 
 	@Test
 	public void initContainerNonSupported() throws InstantiationException {
