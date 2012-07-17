@@ -19,14 +19,14 @@ public @interface Property {
 	/**
 	 * Name of the property
 	 * 
-	 * @return
+	 * @return the name of the property.
 	 */
 	String name();
 
 	/**
 	 * Type of container this property should be added
 	 * 
-	 * @return
+	 * @return the types the property should be assoicated with.
 	 */
 	ContainerType[] types() default { ContainerType.RESUME,
 			ContainerType.EXTENDED };
@@ -36,7 +36,7 @@ public @interface Property {
 	 * 
 	 * Form : {attribute}.{attribute}
 	 * 
-	 * @return
+	 * @return the attribute to lookup.
 	 */
 	String attribute() default "";
 

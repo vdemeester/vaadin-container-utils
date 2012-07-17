@@ -8,32 +8,48 @@ import java.lang.annotation.Annotation;
  * This currently only work on annotation for Type.
  * 
  * @author Vincent Demeester <vincent@demeester.fr>
+ * @param <T>
+ *            type of the Annotation.
  * 
  */
 public abstract class BeanAbstractAnnotationReader<T> {
 
-	private final Class<?> originalEntityClass;
-	private final Class<?> entityClass;
+	private final Class<?> originalBeanClass;
+	private final Class<?> beanClass;
 	private T metadata;
 
-	public BeanAbstractAnnotationReader(Class<?> originalEntityClass,
-			Class<?> entityClass) {
-		this.originalEntityClass = originalEntityClass;
-		this.entityClass = entityClass;
+	/**
+	 * Creates a BeanAbstractAnnotationReader.
+	 * 
+	 * @param originalBeanClass
+	 *            the original bean type.
+	 * @param beanClass
+	 *            the <em>annotated</em> bean type (might be a parent).
+	 * @throws IllegalArgumentException
+	 *             if the originalBeanClass or beanClass is null.
+	 */
+	public BeanAbstractAnnotationReader(Class<?> originalBeanClass,
+			Class<?> beanClass) {
+		if (originalBeanClass == null || beanClass == null) {
+			throw new IllegalArgumentException(
+					"originalBeanClass and beanClass cannot be null.");
+		}
+		this.originalBeanClass = originalBeanClass;
+		this.beanClass = beanClass;
 	}
 
 	/**
 	 * @return the originalEntityClass
 	 */
-	protected Class<?> getOriginalEntityClass() {
-		return originalEntityClass;
+	protected Class<?> getOriginalBeanClass() {
+		return originalBeanClass;
 	}
 
 	/**
 	 * @return the entityClass
 	 */
-	protected Class<?> getEntityClass() {
-		return entityClass;
+	protected Class<?> getBeanClass() {
+		return beanClass;
 	}
 
 	public void setMetadatas(T metadata) {
@@ -51,18 +67,22 @@ public abstract class BeanAbstractAnnotationReader<T> {
 	 * @return
 	 * @throws SecurityException
 	 * @throws NoSuchFieldException
+	 *             if the field is not found or if propertyAttribute is null.
 	 */
 	protected Class<?> getPropertyType(String propertyAttribute)
 			throws SecurityException, NoSuchFieldException {
+		if (propertyAttribute == null) {
+			throw new NoSuchFieldException("no null field.");
+		}
 		Class<?> ret = null;
 		if (propertyAttribute.contains(".")) {
 			String fieldName = propertyAttribute.split("\\.")[0];
 			String subFieldName = propertyAttribute.split("\\.")[1];
-			Class<?> fieldClass = getOriginalEntityClass().getDeclaredField(
+			Class<?> fieldClass = getOriginalBeanClass().getDeclaredField(
 					fieldName).getType();
 			ret = fieldClass.getDeclaredField(subFieldName).getType();
 		} else {
-			ret = getOriginalEntityClass().getDeclaredField(propertyAttribute)
+			ret = getOriginalBeanClass().getDeclaredField(propertyAttribute)
 					.getType();
 		}
 		return ret;
@@ -76,15 +96,27 @@ public abstract class BeanAbstractAnnotationReader<T> {
 	 * @param annotationClass
 	 *            the type of the annotation
 	 * @return the "real" type annotated, either entityClass or a parent.
+	 * @throws IllegalArgumentException
+	 *             if entityClass or annotationClass are null or if entityClass
+	 *             (and its parent) is not annotated with annotationClass.
 	 */
 	public static Class<?> getAnnotatedClass(Class<?> entityClass,
 			Class<? extends Annotation> annotationClass) {
+		if (entityClass == null || annotationClass == null) {
+			throw new IllegalArgumentException(
+					"entityClass and annotationClass cannot be null.");
+		}
 		Class<?> ret = null;
 		if (!entityClass.isAnnotationPresent(annotationClass)) {
 			// On remonte dans la hierarchie jusqu'à Object
 			if (entityClass.getSuperclass() != Object.class) {
 				ret = getAnnotatedClass(entityClass.getSuperclass(),
 						annotationClass);
+			}
+			if (ret == null) {
+				throw new IllegalArgumentException(
+						"entityClass and its super classes are not annotated with "
+								+ annotationClass.getSimpleName() + ".");
 			}
 		} else {
 			ret = entityClass;
