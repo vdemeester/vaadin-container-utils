@@ -19,8 +19,7 @@ import org.shortbrain.vaadin.container.annotation.Property;
 
 @SuppressWarnings("unused")
 @RunWith(BlockJUnit4ClassRunner.class)
-public class AnnotationReaderAlgorithmTest extends
-		AbstractContainerUtilsTest {
+public class AnnotationReaderAlgorithmTest extends AbstractContainerUtilsTest {
 
 	@Test
 	public void testGetPropertiesNull() {
@@ -40,7 +39,8 @@ public class AnnotationReaderAlgorithmTest extends
 			a.getProperties(NonAnnotatedBean.class);
 		} catch (IllegalArgumentException e) {
 			assertTrue(e instanceof IllegalArgumentException);
-			assertEquals("the beanClass has to be annotated witch @Container.",
+			assertEquals(
+					"beanClass and its super classes are not annotated with Container.",
 					e.getMessage());
 		}
 	}

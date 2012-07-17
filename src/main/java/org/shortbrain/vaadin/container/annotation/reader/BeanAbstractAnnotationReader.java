@@ -91,7 +91,7 @@ public abstract class BeanAbstractAnnotationReader<T> {
 	/**
 	 * Get the annotated type by walking in superclass to find the annotation
 	 * 
-	 * @param entityClass
+	 * @param beanClass
 	 *            The type that should be annotated
 	 * @param annotationClass
 	 *            the type of the annotation
@@ -100,26 +100,26 @@ public abstract class BeanAbstractAnnotationReader<T> {
 	 *             if entityClass or annotationClass are null or if entityClass
 	 *             (and its parent) is not annotated with annotationClass.
 	 */
-	public static Class<?> getAnnotatedClass(Class<?> entityClass,
+	public static Class<?> getAnnotatedClass(Class<?> beanClass,
 			Class<? extends Annotation> annotationClass) {
-		if (entityClass == null || annotationClass == null) {
+		if (beanClass == null || annotationClass == null) {
 			throw new IllegalArgumentException(
-					"entityClass and annotationClass cannot be null.");
+					"beanClass and annotationClass cannot be null.");
 		}
 		Class<?> ret = null;
-		if (!entityClass.isAnnotationPresent(annotationClass)) {
+		if (!beanClass.isAnnotationPresent(annotationClass)) {
 			// On remonte dans la hierarchie jusqu'à Object
-			if (entityClass.getSuperclass() != Object.class) {
-				ret = getAnnotatedClass(entityClass.getSuperclass(),
+			if (beanClass.getSuperclass() != Object.class) {
+				ret = getAnnotatedClass(beanClass.getSuperclass(),
 						annotationClass);
 			}
 			if (ret == null) {
 				throw new IllegalArgumentException(
-						"entityClass and its super classes are not annotated with "
+						"beanClass and its super classes are not annotated with "
 								+ annotationClass.getSimpleName() + ".");
 			}
 		} else {
-			ret = entityClass;
+			ret = beanClass;
 		}
 		return ret;
 	}
