@@ -10,6 +10,10 @@
 	<url>http://vdemeester.github.com/vaadin-container-utils</url>
 	<packaging>jar</packaging>
 
+	<properties>
+		<github.global.server>github</github.global.server>
+	</properties>
+
 	<dependencies>
 		<!-- Vaadin dependencies -->
 		<dependency>
@@ -47,6 +51,22 @@
 					<verbose>true</verbose>
 					<fork>true</fork>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.github.github</groupId>
+				<artifactId>site-maven-plugin</artifactId>
+				<version>0.6</version>
+				<configuration>
+					<message>Creating site for ${project.version}</message>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>site</goal>
+						</goals>
+						<phase>site</phase>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
