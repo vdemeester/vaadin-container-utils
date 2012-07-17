@@ -29,14 +29,14 @@
 <a class="jxr_linenumber" name="19" href="#19">19</a>  	<em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="20" href="#20">20</a>  <em class="jxr_javadoccomment">	 * Name of the property</em>
 <a class="jxr_linenumber" name="21" href="#21">21</a>  <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="22" href="#22">22</a>  <em class="jxr_javadoccomment">	 * @return</em>
+<a class="jxr_linenumber" name="22" href="#22">22</a>  <em class="jxr_javadoccomment">	 * @return the name of the property.</em>
 <a class="jxr_linenumber" name="23" href="#23">23</a>  <em class="jxr_javadoccomment">	 */</em>
 <a class="jxr_linenumber" name="24" href="#24">24</a>  	String name();
 <a class="jxr_linenumber" name="25" href="#25">25</a>  
 <a class="jxr_linenumber" name="26" href="#26">26</a>  	<em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="27" href="#27">27</a>  <em class="jxr_javadoccomment">	 * Type of container this property should be added</em>
 <a class="jxr_linenumber" name="28" href="#28">28</a>  <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="29" href="#29">29</a>  <em class="jxr_javadoccomment">	 * @return</em>
+<a class="jxr_linenumber" name="29" href="#29">29</a>  <em class="jxr_javadoccomment">	 * @return the types the property should be assoicated with.</em>
 <a class="jxr_linenumber" name="30" href="#30">30</a>  <em class="jxr_javadoccomment">	 */</em>
 <a class="jxr_linenumber" name="31" href="#31">31</a>  	ContainerType[] types() <strong class="jxr_keyword">default</strong> { ContainerType.RESUME,
 <a class="jxr_linenumber" name="32" href="#32">32</a>  			ContainerType.EXTENDED };
@@ -46,7 +46,7 @@
 <a class="jxr_linenumber" name="36" href="#36">36</a>  <em class="jxr_javadoccomment">	 * </em>
 <a class="jxr_linenumber" name="37" href="#37">37</a>  <em class="jxr_javadoccomment">	 * Form : {attribute}.{attribute}</em>
 <a class="jxr_linenumber" name="38" href="#38">38</a>  <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="39" href="#39">39</a>  <em class="jxr_javadoccomment">	 * @return</em>
+<a class="jxr_linenumber" name="39" href="#39">39</a>  <em class="jxr_javadoccomment">	 * @return the attribute to lookup.</em>
 <a class="jxr_linenumber" name="40" href="#40">40</a>  <em class="jxr_javadoccomment">	 */</em>
 <a class="jxr_linenumber" name="41" href="#41">41</a>  	String attribute() <strong class="jxr_keyword">default</strong> <span class="jxr_string">""</span>;
 <a class="jxr_linenumber" name="42" href="#42">42</a>  

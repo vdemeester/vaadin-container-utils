@@ -1,2 +1,3 @@
 org.shortbrain.vaadin.container
+org.shortbrain.vaadin.container.annotation.reader
 org.shortbrain.vaadin.container.property
