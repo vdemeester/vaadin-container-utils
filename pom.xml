@@ -12,6 +12,7 @@
 
 	<properties>
 		<github.global.server>github</github.global.server>
+		<maven-fluido-skin.version>1.2.1</maven-fluido-skin.version>
 	</properties>
 
 	<dependencies>
