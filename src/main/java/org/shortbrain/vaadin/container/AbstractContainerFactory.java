@@ -41,6 +41,8 @@ public abstract class AbstractContainerFactory<BEAN> implements
 	 * 
 	 * @param beanClass
 	 *            the type of BEAN.
+	 * @param propertyReaderAlgorithm
+	 *            the algorithm to be used to get properties
 	 */
 	public AbstractContainerFactory(Class<? extends BEAN> beanClass,
 			PropertyReaderAlgorithm propertyReaderAlgorithm) {
