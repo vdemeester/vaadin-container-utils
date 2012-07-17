@@ -19,7 +19,7 @@ public @interface Container {
 	/**
 	 * Property list
 	 * 
-	 * @return
+	 * @return a list of {@link Property}.
 	 */
 	Property[] properties() default {};
 }

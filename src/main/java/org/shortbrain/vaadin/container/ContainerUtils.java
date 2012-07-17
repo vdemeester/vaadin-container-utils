@@ -27,6 +27,7 @@ public final class ContainerUtils {
 	 * 
 	 * @param containerClass
 	 *            type of the container
+	 * @return a container.
 	 * @throws IllegalAccessException
 	 * @throws InstantiationException
 	 */

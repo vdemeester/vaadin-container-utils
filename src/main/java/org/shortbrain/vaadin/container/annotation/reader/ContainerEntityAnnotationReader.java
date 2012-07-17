@@ -30,7 +30,7 @@ public class ContainerEntityAnnotationReader
 	protected void process() throws IllegalAccessException,
 			InvocationTargetException, NoSuchMethodException,
 			InstantiationException, SecurityException, NoSuchFieldException {
-		Container container = getEntityClass().getAnnotation(Container.class);
+		Container container = getBeanClass().getAnnotation(Container.class);
 		for (Property property : container.properties()) {
 			processProperty(property);
 		}
