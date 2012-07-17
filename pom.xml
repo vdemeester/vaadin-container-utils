@@ -89,7 +89,7 @@
 	<scm>
 		<connection>scm:git:git@github.com:vdemeester/vaadin-container-utils.git</connection>
 		<developerConnection>scm:git:git@github.com:vdemeester/vaadin-container-utils.git</developerConnection>
-		<url>git@github.com:vdemeester/vaadin-container-utils.git</url>
+		<url>https://github.com/vdemeester/vaadin-container-utils.git</url>
 	</scm>
 	<reporting>
 		<plugins>
