@@ -16,7 +16,7 @@ import org.shortbrain.vaadin.container.annotation.ContainerType;
 import org.shortbrain.vaadin.container.annotation.Property;
 
 @SuppressWarnings("unused")
-public class TestAnnotationReaderAlgorithmTest extends
+public class AnnotationReaderAlgorithmTest extends
 		AbstractContainerUtilsTest {
 
 	@Test
