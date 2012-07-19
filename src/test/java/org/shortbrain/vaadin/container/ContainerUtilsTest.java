@@ -26,6 +26,22 @@ import com.vaadin.data.util.IndexedContainer;
 public class ContainerUtilsTest extends AbstractContainerUtilsTest {
 
 	@Test
+	public void initContainerNull() throws InstantiationException {
+		try {
+			ContainerUtils.initContainer(null);
+			fail("Should throw an IllegalArgumentException");
+		} catch (IllegalAccessException e) {
+			fail("Should not throw an IllegalArgumentException");
+		} catch (InstantiationException e) {
+			fail("Should not throw an IllegalArgumentException");
+		} catch (IllegalArgumentException e) {
+			assertTrue("Should throw an IllegalArgumentException",
+					e instanceof IllegalArgumentException);
+			assertEquals("containerClass cannot be null.", e.getMessage());
+		}
+	}
+
+	@Test
 	public void initContainerNonSupported() throws InstantiationException {
 		try {
 			ContainerUtils.initContainer(NonSupportedContainer.class);
