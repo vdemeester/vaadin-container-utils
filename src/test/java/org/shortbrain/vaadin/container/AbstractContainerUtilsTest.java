@@ -4,7 +4,14 @@ import static org.junit.Assert.*;
 
 import org.shortbrain.vaadin.container.property.PropertyMetadata;
 
-public class AbstractContainerUtilsTest {
+/**
+ * Abstract test class destined to be the parent of all tests in
+ * vaadin-container-utils.
+ * 
+ * @author Vincent Demeester <vincent@demeester.fr>
+ * 
+ */
+public abstract class AbstractContainerUtilsTest {
 
 	/**
 	 * Assert helper to test a {@link PropertyMetadata}.

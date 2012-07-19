@@ -24,7 +24,7 @@ import org.shortbrain.vaadin.container.AbstractContainerUtilsTest;
 public class GetterReaderAlgorithmTest extends AbstractContainerUtilsTest {
 
 	@Test
-	public void testGetPropertiesNull() {
+	public void getPropertiesNull() {
 		GetterReaderAlgorithm g = new GetterReaderAlgorithm();
 		try {
 			g.getProperties(null);
@@ -35,7 +35,7 @@ public class GetterReaderAlgorithmTest extends AbstractContainerUtilsTest {
 	}
 
 	@Test
-	public void testGetProperties() {
+	public void getProperties() {
 		GetterReaderAlgorithm g = new GetterReaderAlgorithm();
 		List<PropertyMetadata> metadatas = g.getProperties(TestBean.class);
 		assertNotNull(metadatas);

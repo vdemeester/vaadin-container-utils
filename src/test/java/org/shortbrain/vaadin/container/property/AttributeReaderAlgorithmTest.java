@@ -25,7 +25,7 @@ import org.shortbrain.vaadin.container.AbstractContainerUtilsTest;
 public class AttributeReaderAlgorithmTest extends AbstractContainerUtilsTest {
 
 	@Test
-	public void testGetPropertiesNull() {
+	public void getPropertiesNull() {
 		AttributeReaderAlgorithm a = new AttributeReaderAlgorithm();
 		try {
 			a.getProperties(null);
@@ -37,7 +37,7 @@ public class AttributeReaderAlgorithmTest extends AbstractContainerUtilsTest {
 	}
 
 	@Test
-	public void testGetPropertiesIgnoredNull() {
+	public void getPropertiesIgnoredNull() {
 		AttributeReaderAlgorithm a = new AttributeReaderAlgorithm(null);
 		List<PropertyMetadata> metadatas = a.getProperties(SuperTestBean.class);
 		assertNotNull(metadatas);
@@ -46,7 +46,7 @@ public class AttributeReaderAlgorithmTest extends AbstractContainerUtilsTest {
 	}
 
 	@Test
-	public void testGetPropertiesDefault() {
+	public void getPropertiesDefault() {
 		AttributeReaderAlgorithm a = new AttributeReaderAlgorithm();
 		List<PropertyMetadata> metadatas = a.getProperties(TestBean.class);
 		assertNotNull(metadatas);
@@ -58,7 +58,7 @@ public class AttributeReaderAlgorithmTest extends AbstractContainerUtilsTest {
 	}
 
 	@Test
-	public void testGetPropertiesWithSuper() {
+	public void getPropertiesWithSuper() {
 		AttributeReaderAlgorithm a = new AttributeReaderAlgorithm(true);
 		List<PropertyMetadata> metadatas = a.getProperties(TestBean.class);
 		assertNotNull(metadatas);
@@ -70,7 +70,7 @@ public class AttributeReaderAlgorithmTest extends AbstractContainerUtilsTest {
 	}
 
 	@Test
-	public void testGetPropertiesWithoutSuper() {
+	public void getPropertiesWithoutSuper() {
 		AttributeReaderAlgorithm a = new AttributeReaderAlgorithm(false);
 		List<PropertyMetadata> metadatas = a.getProperties(TestBean.class);
 		assertNotNull(metadatas);
@@ -81,7 +81,7 @@ public class AttributeReaderAlgorithmTest extends AbstractContainerUtilsTest {
 	}
 
 	@Test
-	public void testGetPropertiesWithIgnored() {
+	public void getPropertiesWithIgnored() {
 		AttributeReaderAlgorithm a1 = new AttributeReaderAlgorithm(
 				Arrays.asList(new String[] { "date" }));
 		List<PropertyMetadata> metadatas1 = a1.getProperties(TestBean.class);
@@ -102,7 +102,7 @@ public class AttributeReaderAlgorithmTest extends AbstractContainerUtilsTest {
 	}
 
 	@Test
-	public void testGetPropertiesWithSuperAndIgnored() {
+	public void getPropertiesWithSuperAndIgnored() {
 		AttributeReaderAlgorithm a1 = new AttributeReaderAlgorithm(
 				Arrays.asList(new String[] { "date" }), true);
 		List<PropertyMetadata> metadatas1 = a1.getProperties(TestBean.class);
@@ -123,7 +123,7 @@ public class AttributeReaderAlgorithmTest extends AbstractContainerUtilsTest {
 	}
 
 	@Test
-	public void testGetPropertiesWithSuperAndWithoutIgnored() {
+	public void getPropertiesWithSuperAndWithoutIgnored() {
 		AttributeReaderAlgorithm a = new AttributeReaderAlgorithm(null, true);
 		List<PropertyMetadata> metadatas = a.getProperties(TestBean.class);
 		assertNotNull(metadatas);
@@ -135,7 +135,7 @@ public class AttributeReaderAlgorithmTest extends AbstractContainerUtilsTest {
 	}
 
 	@Test
-	public void testGetPropertiesWithoutSuperAndIgnored() {
+	public void getPropertiesWithoutSuperAndIgnored() {
 		AttributeReaderAlgorithm a = new AttributeReaderAlgorithm(
 				Arrays.asList(new String[] { "date" }), false);
 		List<PropertyMetadata> metadatas = a.getProperties(TestBean.class);
@@ -147,7 +147,7 @@ public class AttributeReaderAlgorithmTest extends AbstractContainerUtilsTest {
 	}
 
 	@Test
-	public void testGetPropertiesWithoutSuperAndWithoutIgnored() {
+	public void getPropertiesWithoutSuperAndWithoutIgnored() {
 		AttributeReaderAlgorithm a = new AttributeReaderAlgorithm(null, false);
 		List<PropertyMetadata> metadatas = a.getProperties(TestBean.class);
 		assertNotNull(metadatas);

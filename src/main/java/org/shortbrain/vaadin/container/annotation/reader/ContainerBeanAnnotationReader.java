@@ -17,11 +17,11 @@ import org.shortbrain.vaadin.container.property.PropertyMetadata;
  * @author Vincent Demeester <vincent@demeester.fr>
  * 
  */
-public class ContainerEntityAnnotationReader
+public class ContainerBeanAnnotationReader
 		extends
 		BeanAbstractAnnotationReader<Map<ContainerType, List<PropertyMetadata>>> {
 
-	private ContainerEntityAnnotationReader(Class<?> originalEntityClass,
+	private ContainerBeanAnnotationReader(Class<?> originalEntityClass,
 			Class<?> entityClass) {
 		super(originalEntityClass, entityClass);
 		setMetadatas(new HashMap<ContainerType, List<PropertyMetadata>>());
@@ -65,7 +65,7 @@ public class ContainerEntityAnnotationReader
 		Class<?> entityClass = getAnnotatedClass(originalEntityClass,
 				Container.class);
 		if (entityClass != null) {
-			ContainerEntityAnnotationReader reader = new ContainerEntityAnnotationReader(
+			ContainerBeanAnnotationReader reader = new ContainerBeanAnnotationReader(
 					originalEntityClass, entityClass);
 			reader.process();
 			ret = reader.getMetadatas();

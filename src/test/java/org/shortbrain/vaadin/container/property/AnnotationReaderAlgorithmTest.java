@@ -22,7 +22,7 @@ import org.shortbrain.vaadin.container.annotation.Property;
 public class AnnotationReaderAlgorithmTest extends AbstractContainerUtilsTest {
 
 	@Test
-	public void testGetPropertiesNull() {
+	public void getPropertiesNull() {
 		try {
 			AnnotationReaderAlgorithm a = new AnnotationReaderAlgorithm(null);
 			fail("should throw an IllegalArgumentException");
@@ -32,7 +32,7 @@ public class AnnotationReaderAlgorithmTest extends AbstractContainerUtilsTest {
 	}
 
 	@Test
-	public void testGetPropertiesNonAnnotated() {
+	public void getPropertiesNonAnnotated() {
 		AnnotationReaderAlgorithm a = new AnnotationReaderAlgorithm(
 				ContainerType.RESUME);
 		try {
@@ -46,7 +46,7 @@ public class AnnotationReaderAlgorithmTest extends AbstractContainerUtilsTest {
 	}
 
 	@Test
-	public void testGetPropertiesEmpty() {
+	public void getPropertiesEmpty() {
 		AnnotationReaderAlgorithm a = new AnnotationReaderAlgorithm(
 				ContainerType.RESUME);
 		List<PropertyMetadata> metadatas = a
@@ -55,7 +55,7 @@ public class AnnotationReaderAlgorithmTest extends AbstractContainerUtilsTest {
 	}
 
 	@Test
-	public void testGetProperties() {
+	public void getProperties() {
 		AnnotationReaderAlgorithm a1 = new AnnotationReaderAlgorithm(
 				ContainerType.RESUME);
 		List<PropertyMetadata> metadatas1 = a1.getProperties(TestBean.class);

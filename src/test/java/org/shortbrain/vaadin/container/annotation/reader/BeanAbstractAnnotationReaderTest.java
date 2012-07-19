@@ -4,11 +4,13 @@ import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
+import java.lang.reflect.Field;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -58,7 +60,7 @@ public class BeanAbstractAnnotationReaderTest extends
 	}
 
 	@Test
-	public void BeanAbstractAnnotationReaderStaticGetAnnotatedClassNull() {
+	public void staticGetAnnotatedClassNull() {
 		try {
 			BeanAbstractAnnotationReader.getAnnotatedClass(null, null);
 			fail("should throw an IllegalArgumentException");
@@ -88,32 +90,6 @@ public class BeanAbstractAnnotationReaderTest extends
 	}
 
 	@Test
-	public void BeanAbstractAnnotationReaderStaticGetAnnotatedClassNonAnnotated() {
-		try {
-			BeanAbstractAnnotationReader.getAnnotatedClass(
-					NonAnnotatedBean.class, SimpleAnnotation.class);
-			fail("should throw an IllegalArgumentException");
-		} catch (IllegalArgumentException e) {
-			assertTrue(e instanceof IllegalArgumentException);
-			assertEquals(
-					"beanClass and its super classes are not annotated with SimpleAnnotation.",
-					e.getMessage());
-		}
-	}
-
-	@Test
-	public void BeanAbstractAnnotationReaderStaticGetAnnotatedClass() {
-		Class<?> klass1 = BeanAbstractAnnotationReader.getAnnotatedClass(
-				SimpleAnnotatedBean.class, SimpleAnnotation.class);
-		assertNotNull(klass1);
-		assertEquals(SimpleAnnotatedBean.class, klass1);
-		Class<?> klass2 = BeanAbstractAnnotationReader.getAnnotatedClass(
-				SubSimpleAnnotatedBean.class, SimpleAnnotation.class);
-		assertNotNull(klass1);
-		assertEquals(SimpleAnnotatedBean.class, klass1);
-	}
-
-	@Test
 	public void BeanAbstractAnnotationReader() {
 		BeanAbstractAnnotationReader<Object> b1 = new BeanAbstractAnnotationReader<Object>(
 				SimpleAnnotatedBean.class, SimpleAnnotatedBean.class) {
@@ -134,7 +110,33 @@ public class BeanAbstractAnnotationReaderTest extends
 	}
 
 	@Test
-	public void BeanAbstractAnnotationReaderGetPropertyTypeNull() {
+	public void staticGetAnnotatedClassNonAnnotated() {
+		try {
+			BeanAbstractAnnotationReader.getAnnotatedClass(
+					NonAnnotatedBean.class, SimpleAnnotation.class);
+			fail("should throw an IllegalArgumentException");
+		} catch (IllegalArgumentException e) {
+			assertTrue(e instanceof IllegalArgumentException);
+			assertEquals(
+					"beanClass and its super classes are not annotated with SimpleAnnotation.",
+					e.getMessage());
+		}
+	}
+
+	@Test
+	public void staticGetAnnotatedClass() {
+		Class<?> klass1 = BeanAbstractAnnotationReader.getAnnotatedClass(
+				SimpleAnnotatedBean.class, SimpleAnnotation.class);
+		assertNotNull(klass1);
+		assertEquals(SimpleAnnotatedBean.class, klass1);
+		Class<?> klass2 = BeanAbstractAnnotationReader.getAnnotatedClass(
+				SubSimpleAnnotatedBean.class, SimpleAnnotation.class);
+		assertNotNull(klass1);
+		assertEquals(SimpleAnnotatedBean.class, klass1);
+	}
+
+	@Test
+	public void getPropertyTypeNull() {
 		BeanAbstractAnnotationReader<Object> b1 = new BeanAbstractAnnotationReader<Object>(
 				SimpleAnnotatedBean.class, SimpleAnnotatedBean.class) {
 		};
@@ -149,7 +151,7 @@ public class BeanAbstractAnnotationReaderTest extends
 	}
 
 	@Test
-	public void BeanAbstractAnnotationReaderGetPropertyTypeEmpty() {
+	public void getPropertyTypeEmpty() {
 		BeanAbstractAnnotationReader<Object> b1 = new BeanAbstractAnnotationReader<Object>(
 				SimpleAnnotatedBean.class, SimpleAnnotatedBean.class) {
 		};
@@ -164,7 +166,7 @@ public class BeanAbstractAnnotationReaderTest extends
 	}
 
 	@Test
-	public void BeanAbstractAnnotationReaderGetPropertyTypeInvalid() {
+	public void getPropertyTypeInvalid() {
 		BeanAbstractAnnotationReader<Object> b1 = new BeanAbstractAnnotationReader<Object>(
 				SimpleAnnotatedBean.class, SimpleAnnotatedBean.class) {
 		};
@@ -179,7 +181,7 @@ public class BeanAbstractAnnotationReaderTest extends
 	}
 
 	@Test
-	public void BeanAbstractAnnotationReaderGetPropertyType() {
+	public void getPropertyType() {
 		BeanAbstractAnnotationReader<Object> b1 = new BeanAbstractAnnotationReader<Object>(
 				SimpleAnnotatedBean.class, SimpleAnnotatedBean.class) {
 		};
@@ -202,6 +204,53 @@ public class BeanAbstractAnnotationReaderTest extends
 		} catch (NoSuchFieldException e) {
 			fail(e.getMessage());
 		}
+	}
+
+	@Test
+	public void getFieldNulls() {
+		BeanAbstractAnnotationReader<Object> b1 = new BeanAbstractAnnotationReader<Object>(
+				SimpleAnnotatedBean.class, SimpleAnnotatedBean.class) {
+		};
+		try {
+			b1.getField(null, null);
+			fail("should throw an IllegalArgumentException");
+		} catch (IllegalArgumentException e) {
+			assertTrue(e instanceof IllegalArgumentException);
+			assertEquals("klass or fieldName cannot be null.", e.getMessage());
+		}
+		try {
+			b1.getField(null, "string");
+			fail("should throw an IllegalArgumentException");
+		} catch (IllegalArgumentException e) {
+			assertTrue(e instanceof IllegalArgumentException);
+			assertEquals("klass or fieldName cannot be null.", e.getMessage());
+		}
+		try {
+			b1.getField(SimpleAnnotatedBean.class, null);
+			fail("should throw an IllegalArgumentException");
+		} catch (IllegalArgumentException e) {
+			assertTrue(e instanceof IllegalArgumentException);
+			assertEquals("klass or fieldName cannot be null.", e.getMessage());
+		}
+	}
+
+	@Test
+	public void getFieldInexistent() {
+		BeanAbstractAnnotationReader<Object> b1 = new BeanAbstractAnnotationReader<Object>(
+				SimpleAnnotatedBean.class, SimpleAnnotatedBean.class) {
+		};
+		Field f = b1.getField(SimpleAnnotatedBean.class, "inexistent");
+		assertNull(f);
+	}
+
+	@Test
+	public void getField() throws NoSuchFieldException, SecurityException {
+		BeanAbstractAnnotationReader<Object> b1 = new BeanAbstractAnnotationReader<Object>(
+				SimpleAnnotatedBean.class, SimpleAnnotatedBean.class) {
+		};
+		Field f = b1.getField(SimpleAnnotatedBean.class, "string");
+		assertNotNull(f);
+		assertEquals(SimpleAnnotatedBean.class.getDeclaredField("string"), f);
 	}
 
 	@Target({ TYPE })
