@@ -1,6 +1,7 @@
 package org.shortbrain.vaadin.container.annotation.reader;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
 
 /**
  * Generic annotation reader.
@@ -78,14 +79,51 @@ public abstract class BeanAbstractAnnotationReader<T> {
 		if (propertyAttribute.contains(".")) {
 			String fieldName = propertyAttribute.split("\\.")[0];
 			String subFieldName = propertyAttribute.split("\\.")[1];
-			Class<?> fieldClass = getOriginalBeanClass().getDeclaredField(
-					fieldName).getType();
+			Field field = getField(getOriginalBeanClass(), fieldName);
+			if (field == null) {
+				throw new NoSuchFieldException("No field " + fieldName
+						+ " for class " + getOriginalBeanClass().getName()
+						+ ".");
+			}
+			Class<?> fieldClass = field.getType();
 			ret = fieldClass.getDeclaredField(subFieldName).getType();
 		} else {
-			ret = getOriginalBeanClass().getDeclaredField(propertyAttribute)
-					.getType();
+			Field field = getField(getOriginalBeanClass(), propertyAttribute);
+			if (field == null) {
+				throw new NoSuchFieldException("No field " + propertyAttribute
+						+ " for class " + getOriginalBeanClass().getName()
+						+ ".");
+			}
+			ret = field.getType();
 		}
 		return ret;
+	}
+
+	/**
+	 * Get the Field for the given class and parents.
+	 * 
+	 * @param klass
+	 *            the class where we will look for the field.
+	 * @param fieldName
+	 *            the name of the field.
+	 * @return the field or null if we cannot find the field.
+	 * @throws IllegalArgumentException
+	 *             if klass or fieldName are null.
+	 */
+	protected Field getField(Class<?> klass, String fieldName) {
+		if (klass == null || fieldName == null) {
+			throw new IllegalArgumentException(
+					"klass or fieldName cannot be null.");
+		}
+		Field field = null;
+		if (klass != Object.class) {
+			try {
+				field = klass.getDeclaredField(fieldName);
+			} catch (NoSuchFieldException e) {
+				field = getField(klass.getSuperclass(), fieldName);
+			}
+		}
+		return field;
 	}
 
 	/**
