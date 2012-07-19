@@ -35,7 +35,7 @@
 <a class="jxr_linenumber" name="25" href="#25">25</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/shortbrain/vaadin/container/property/AttributeReaderAlgorithmTest.html">AttributeReaderAlgorithmTest</a> <strong class="jxr_keyword">extends</strong> <a href="../../../../../org/shortbrain/vaadin/container/AbstractContainerUtilsTest.html">AbstractContainerUtilsTest</a> {
 <a class="jxr_linenumber" name="26" href="#26">26</a>  
 <a class="jxr_linenumber" name="27" href="#27">27</a>  	@Test
-<a class="jxr_linenumber" name="28" href="#28">28</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetPropertiesNull() {
+<a class="jxr_linenumber" name="28" href="#28">28</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> getPropertiesNull() {
 <a class="jxr_linenumber" name="29" href="#29">29</a>  		AttributeReaderAlgorithm a = <strong class="jxr_keyword">new</strong> AttributeReaderAlgorithm();
 <a class="jxr_linenumber" name="30" href="#30">30</a>  		<strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="31" href="#31">31</a>  			a.getProperties(<strong class="jxr_keyword">null</strong>);
@@ -47,7 +47,7 @@
 <a class="jxr_linenumber" name="37" href="#37">37</a>  	}
 <a class="jxr_linenumber" name="38" href="#38">38</a>  
 <a class="jxr_linenumber" name="39" href="#39">39</a>  	@Test
-<a class="jxr_linenumber" name="40" href="#40">40</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetPropertiesIgnoredNull() {
+<a class="jxr_linenumber" name="40" href="#40">40</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> getPropertiesIgnoredNull() {
 <a class="jxr_linenumber" name="41" href="#41">41</a>  		AttributeReaderAlgorithm a = <strong class="jxr_keyword">new</strong> AttributeReaderAlgorithm(<strong class="jxr_keyword">null</strong>);
 <a class="jxr_linenumber" name="42" href="#42">42</a>  		List&lt;PropertyMetadata&gt; metadatas = a.getProperties(SuperTestBean.<strong class="jxr_keyword">class</strong>);
 <a class="jxr_linenumber" name="43" href="#43">43</a>  		assertNotNull(metadatas);
@@ -56,7 +56,7 @@
 <a class="jxr_linenumber" name="46" href="#46">46</a>  	}
 <a class="jxr_linenumber" name="47" href="#47">47</a>  
 <a class="jxr_linenumber" name="48" href="#48">48</a>  	@Test
-<a class="jxr_linenumber" name="49" href="#49">49</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetPropertiesDefault() {
+<a class="jxr_linenumber" name="49" href="#49">49</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> getPropertiesDefault() {
 <a class="jxr_linenumber" name="50" href="#50">50</a>  		AttributeReaderAlgorithm a = <strong class="jxr_keyword">new</strong> AttributeReaderAlgorithm();
 <a class="jxr_linenumber" name="51" href="#51">51</a>  		List&lt;PropertyMetadata&gt; metadatas = a.getProperties(TestBean.<strong class="jxr_keyword">class</strong>);
 <a class="jxr_linenumber" name="52" href="#52">52</a>  		assertNotNull(metadatas);
@@ -68,7 +68,7 @@
 <a class="jxr_linenumber" name="58" href="#58">58</a>  	}
 <a class="jxr_linenumber" name="59" href="#59">59</a>  
 <a class="jxr_linenumber" name="60" href="#60">60</a>  	@Test
-<a class="jxr_linenumber" name="61" href="#61">61</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetPropertiesWithSuper() {
+<a class="jxr_linenumber" name="61" href="#61">61</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> getPropertiesWithSuper() {
 <a class="jxr_linenumber" name="62" href="#62">62</a>  		AttributeReaderAlgorithm a = <strong class="jxr_keyword">new</strong> AttributeReaderAlgorithm(<strong class="jxr_keyword">true</strong>);
 <a class="jxr_linenumber" name="63" href="#63">63</a>  		List&lt;PropertyMetadata&gt; metadatas = a.getProperties(TestBean.<strong class="jxr_keyword">class</strong>);
 <a class="jxr_linenumber" name="64" href="#64">64</a>  		assertNotNull(metadatas);
@@ -80,7 +80,7 @@
 <a class="jxr_linenumber" name="70" href="#70">70</a>  	}
 <a class="jxr_linenumber" name="71" href="#71">71</a>  
 <a class="jxr_linenumber" name="72" href="#72">72</a>  	@Test
-<a class="jxr_linenumber" name="73" href="#73">73</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetPropertiesWithoutSuper() {
+<a class="jxr_linenumber" name="73" href="#73">73</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> getPropertiesWithoutSuper() {
 <a class="jxr_linenumber" name="74" href="#74">74</a>  		AttributeReaderAlgorithm a = <strong class="jxr_keyword">new</strong> AttributeReaderAlgorithm(false);
 <a class="jxr_linenumber" name="75" href="#75">75</a>  		List&lt;PropertyMetadata&gt; metadatas = a.getProperties(TestBean.<strong class="jxr_keyword">class</strong>);
 <a class="jxr_linenumber" name="76" href="#76">76</a>  		assertNotNull(metadatas);
@@ -91,7 +91,7 @@
 <a class="jxr_linenumber" name="81" href="#81">81</a>  	}
 <a class="jxr_linenumber" name="82" href="#82">82</a>  
 <a class="jxr_linenumber" name="83" href="#83">83</a>  	@Test
-<a class="jxr_linenumber" name="84" href="#84">84</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetPropertiesWithIgnored() {
+<a class="jxr_linenumber" name="84" href="#84">84</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> getPropertiesWithIgnored() {
 <a class="jxr_linenumber" name="85" href="#85">85</a>  		AttributeReaderAlgorithm a1 = <strong class="jxr_keyword">new</strong> AttributeReaderAlgorithm(
 <a class="jxr_linenumber" name="86" href="#86">86</a>  				Arrays.asList(<strong class="jxr_keyword">new</strong> String[] { <span class="jxr_string">"date"</span> }));
 <a class="jxr_linenumber" name="87" href="#87">87</a>  		List&lt;PropertyMetadata&gt; metadatas1 = a1.getProperties(TestBean.<strong class="jxr_keyword">class</strong>);
@@ -112,7 +112,7 @@
 <a class="jxr_linenumber" name="102" href="#102">102</a> 	}
 <a class="jxr_linenumber" name="103" href="#103">103</a> 
 <a class="jxr_linenumber" name="104" href="#104">104</a> 	@Test
-<a class="jxr_linenumber" name="105" href="#105">105</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetPropertiesWithSuperAndIgnored() {
+<a class="jxr_linenumber" name="105" href="#105">105</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> getPropertiesWithSuperAndIgnored() {
 <a class="jxr_linenumber" name="106" href="#106">106</a> 		AttributeReaderAlgorithm a1 = <strong class="jxr_keyword">new</strong> AttributeReaderAlgorithm(
 <a class="jxr_linenumber" name="107" href="#107">107</a> 				Arrays.asList(<strong class="jxr_keyword">new</strong> String[] { <span class="jxr_string">"date"</span> }), <strong class="jxr_keyword">true</strong>);
 <a class="jxr_linenumber" name="108" href="#108">108</a> 		List&lt;PropertyMetadata&gt; metadatas1 = a1.getProperties(TestBean.<strong class="jxr_keyword">class</strong>);
@@ -133,7 +133,7 @@
 <a class="jxr_linenumber" name="123" href="#123">123</a> 	}
 <a class="jxr_linenumber" name="124" href="#124">124</a> 
 <a class="jxr_linenumber" name="125" href="#125">125</a> 	@Test
-<a class="jxr_linenumber" name="126" href="#126">126</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetPropertiesWithSuperAndWithoutIgnored() {
+<a class="jxr_linenumber" name="126" href="#126">126</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> getPropertiesWithSuperAndWithoutIgnored() {
 <a class="jxr_linenumber" name="127" href="#127">127</a> 		AttributeReaderAlgorithm a = <strong class="jxr_keyword">new</strong> AttributeReaderAlgorithm(<strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">true</strong>);
 <a class="jxr_linenumber" name="128" href="#128">128</a> 		List&lt;PropertyMetadata&gt; metadatas = a.getProperties(TestBean.<strong class="jxr_keyword">class</strong>);
 <a class="jxr_linenumber" name="129" href="#129">129</a> 		assertNotNull(metadatas);
@@ -145,7 +145,7 @@
 <a class="jxr_linenumber" name="135" href="#135">135</a> 	}
 <a class="jxr_linenumber" name="136" href="#136">136</a> 
 <a class="jxr_linenumber" name="137" href="#137">137</a> 	@Test
-<a class="jxr_linenumber" name="138" href="#138">138</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetPropertiesWithoutSuperAndIgnored() {
+<a class="jxr_linenumber" name="138" href="#138">138</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> getPropertiesWithoutSuperAndIgnored() {
 <a class="jxr_linenumber" name="139" href="#139">139</a> 		AttributeReaderAlgorithm a = <strong class="jxr_keyword">new</strong> AttributeReaderAlgorithm(
 <a class="jxr_linenumber" name="140" href="#140">140</a> 				Arrays.asList(<strong class="jxr_keyword">new</strong> String[] { <span class="jxr_string">"date"</span> }), false);
 <a class="jxr_linenumber" name="141" href="#141">141</a> 		List&lt;PropertyMetadata&gt; metadatas = a.getProperties(TestBean.<strong class="jxr_keyword">class</strong>);
@@ -157,7 +157,7 @@
 <a class="jxr_linenumber" name="147" href="#147">147</a> 	}
 <a class="jxr_linenumber" name="148" href="#148">148</a> 
 <a class="jxr_linenumber" name="149" href="#149">149</a> 	@Test
-<a class="jxr_linenumber" name="150" href="#150">150</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetPropertiesWithoutSuperAndWithoutIgnored() {
+<a class="jxr_linenumber" name="150" href="#150">150</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> getPropertiesWithoutSuperAndWithoutIgnored() {
 <a class="jxr_linenumber" name="151" href="#151">151</a> 		AttributeReaderAlgorithm a = <strong class="jxr_keyword">new</strong> AttributeReaderAlgorithm(<strong class="jxr_keyword">null</strong>, false);
 <a class="jxr_linenumber" name="152" href="#152">152</a> 		List&lt;PropertyMetadata&gt; metadatas = a.getProperties(TestBean.<strong class="jxr_keyword">class</strong>);
 <a class="jxr_linenumber" name="153" href="#153">153</a> 		assertNotNull(metadatas);
