@@ -6,7 +6,7 @@ import java.util.Map;
 
 import org.shortbrain.vaadin.container.annotation.Container;
 import org.shortbrain.vaadin.container.annotation.ContainerType;
-import static org.shortbrain.vaadin.container.annotation.reader.ContainerEntityAnnotationReader.getMetadataByContainerType;
+import static org.shortbrain.vaadin.container.annotation.reader.ContainerBeanAnnotationReader.getMetadataByContainerType;
 
 /**
  * Implementation of {@link PropertyReaderAlgorithm} that looks for annotation
