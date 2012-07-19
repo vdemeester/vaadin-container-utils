@@ -3,19 +3,19 @@
 <rss version="0.91">
   <channel>
     <title>vaadin-container-utils - Checkstyle report</title>
-    <link>http://vincent.demeester.fr/vaadin-container-utils</link>
+    <link>http://vdemeester.github.com/vaadin-container-utils</link>
     <description>vaadin-container-utils - Checkstyle report</description>
     <language>en-us</language>
     <copyright>&#169;2012</copyright>
     <item>
       <title>File: 13,
-             Errors: 1064,
+             Errors: 1121,
              Warnings: 0,
              Infos: 0
       </title>
-            <link>http://vincent.demeester.fr/vaadin-container-utils/checkstyle.html</link>
+            <link>http://vdemeester.github.com/vaadin-container-utils/checkstyle.html</link>
       <description>
-        <p>Click <a href="http://vincent.demeester.fr/vaadin-container-utils/checkstyle.html">here</a> for the full Checkstyle report.</p>
+        <p>Click <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html">here</a> for the full Checkstyle report.</p>
 
         <table summary="Files" boder="1">
           <thead>
@@ -29,7 +29,7 @@
           <tbody>
                           <tr>
                 <td>
-                  <a href="http://vincent.demeester.fr/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.ContainerUtils.java">org/shortbrain/vaadin/container/ContainerUtils.java</a>
+                  <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.ContainerUtils.java">org/shortbrain/vaadin/container/ContainerUtils.java</a>
                 </td>
                 <td>
                   0
@@ -38,12 +38,12 @@
                   0
                 </td>
                 <td>
-                  90
+                  100
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://vincent.demeester.fr/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.annotation.reader.ContainerBeanAnnotationReader.java">org/shortbrain/vaadin/container/annotation/reader/ContainerBeanAnnotationReader.java</a>
+                  <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.annotation.reader.ContainerBeanAnnotationReader.java">org/shortbrain/vaadin/container/annotation/reader/ContainerBeanAnnotationReader.java</a>
                 </td>
                 <td>
                   0
@@ -52,12 +52,12 @@
                   0
                 </td>
                 <td>
-                  80
+                  83
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://vincent.demeester.fr/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.property.PropertyReaderAlgorithm.java">org/shortbrain/vaadin/container/property/PropertyReaderAlgorithm.java</a>
+                  <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.property.PropertyReaderAlgorithm.java">org/shortbrain/vaadin/container/property/PropertyReaderAlgorithm.java</a>
                 </td>
                 <td>
                   0
@@ -66,12 +66,12 @@
                   0
                 </td>
                 <td>
-                  4
+                  7
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://vincent.demeester.fr/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.ContainerFactory.java">org/shortbrain/vaadin/container/ContainerFactory.java</a>
+                  <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.ContainerFactory.java">org/shortbrain/vaadin/container/ContainerFactory.java</a>
                 </td>
                 <td>
                   0
@@ -80,12 +80,12 @@
                   0
                 </td>
                 <td>
-                  53
+                  56
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://vincent.demeester.fr/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.AbstractContainerFactory.java">org/shortbrain/vaadin/container/AbstractContainerFactory.java</a>
+                  <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.AbstractContainerFactory.java">org/shortbrain/vaadin/container/AbstractContainerFactory.java</a>
                 </td>
                 <td>
                   0
@@ -94,12 +94,12 @@
                   0
                 </td>
                 <td>
-                  293
+                  307
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://vincent.demeester.fr/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.annotation.Container.java">org/shortbrain/vaadin/container/annotation/Container.java</a>
+                  <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.annotation.Container.java">org/shortbrain/vaadin/container/annotation/Container.java</a>
                 </td>
                 <td>
                   0
@@ -108,12 +108,12 @@
                   0
                 </td>
                 <td>
-                  13
+                  16
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://vincent.demeester.fr/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.annotation.ContainerType.java">org/shortbrain/vaadin/container/annotation/ContainerType.java</a>
+                  <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.annotation.ContainerType.java">org/shortbrain/vaadin/container/annotation/ContainerType.java</a>
                 </td>
                 <td>
                   0
@@ -122,12 +122,12 @@
                   0
                 </td>
                 <td>
-                  6
+                  9
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://vincent.demeester.fr/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.annotation.reader.BeanAbstractAnnotationReader.java">org/shortbrain/vaadin/container/annotation/reader/BeanAbstractAnnotationReader.java</a>
+                  <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.annotation.reader.BeanAbstractAnnotationReader.java">org/shortbrain/vaadin/container/annotation/reader/BeanAbstractAnnotationReader.java</a>
                 </td>
                 <td>
                   0
@@ -136,12 +136,12 @@
                   0
                 </td>
                 <td>
-                  192
+                  195
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://vincent.demeester.fr/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.property.AttributeReaderAlgorithm.java">org/shortbrain/vaadin/container/property/AttributeReaderAlgorithm.java</a>
+                  <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.property.AttributeReaderAlgorithm.java">org/shortbrain/vaadin/container/property/AttributeReaderAlgorithm.java</a>
                 </td>
                 <td>
                   0
@@ -150,12 +150,12 @@
                   0
                 </td>
                 <td>
-                  120
+                  123
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://vincent.demeester.fr/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.annotation.Property.java">org/shortbrain/vaadin/container/annotation/Property.java</a>
+                  <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.annotation.Property.java">org/shortbrain/vaadin/container/annotation/Property.java</a>
                 </td>
                 <td>
                   0
@@ -164,12 +164,12 @@
                   0
                 </td>
                 <td>
-                  33
+                  36
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://vincent.demeester.fr/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.property.AnnotationReaderAlgorithm.java">org/shortbrain/vaadin/container/property/AnnotationReaderAlgorithm.java</a>
+                  <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.property.AnnotationReaderAlgorithm.java">org/shortbrain/vaadin/container/property/AnnotationReaderAlgorithm.java</a>
                 </td>
                 <td>
                   0
@@ -178,12 +178,12 @@
                   0
                 </td>
                 <td>
-                  76
+                  79
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://vincent.demeester.fr/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.property.GetterReaderAlgorithm.java">org/shortbrain/vaadin/container/property/GetterReaderAlgorithm.java</a>
+                  <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.property.GetterReaderAlgorithm.java">org/shortbrain/vaadin/container/property/GetterReaderAlgorithm.java</a>
                 </td>
                 <td>
                   0
@@ -192,12 +192,12 @@
                   0
                 </td>
                 <td>
-                  35
+                  38
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://vincent.demeester.fr/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.property.PropertyMetadata.java">org/shortbrain/vaadin/container/property/PropertyMetadata.java</a>
+                  <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.property.PropertyMetadata.java">org/shortbrain/vaadin/container/property/PropertyMetadata.java</a>
                 </td>
                 <td>
                   0
@@ -206,7 +206,7 @@
                   0
                 </td>
                 <td>
-                  69
+                  72
                 </td>
               </tr>
                       </tbody>
