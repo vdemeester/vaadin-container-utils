@@ -1,3 +1,18 @@
+/*
+ * Copyright 2012 Vincent Demeester<vincent+shortbrain@demeester.fr>.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package org.shortbrain.vaadin.container;
 
 import static org.shortbrain.vaadin.container.ContainerUtils.addContainerProperty;
@@ -8,6 +23,8 @@ import java.util.Collection;
 import java.util.List;
 
 import org.apache.commons.beanutils.PropertyUtils;
+import org.junit.runner.RunWith;
+import org.junit.runners.BlockJUnit4ClassRunner;
 import org.shortbrain.vaadin.container.property.PropertyMetadata;
 import org.shortbrain.vaadin.container.property.PropertyReaderAlgorithm;
 
@@ -23,6 +40,7 @@ import com.vaadin.data.Container.Hierarchical;
  * @param <BEAN>
  *            type of the beans.
  */
+@RunWith(BlockJUnit4ClassRunner.class)
 public abstract class AbstractContainerFactory<BEAN> implements
 		ContainerFactory<BEAN> {
 
