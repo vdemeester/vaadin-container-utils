@@ -45,10 +45,15 @@ public final class ContainerUtils {
 	 * @return a container.
 	 * @throws IllegalAccessException
 	 * @throws InstantiationException
+	 * @throws IllegalArgumentException
+	 *             if containerClass is null.
 	 */
 	public static Container initContainer(
 			Class<? extends Container> containerClass)
 			throws InstantiationException, IllegalAccessException {
+		if (containerClass == null) {
+			throw new IllegalArgumentException("containerClass cannot be null.");
+		}
 		Container container = null;
 		if (containerClass.isInterface()) {
 			if (containerClass == Filterable.class) {

@@ -23,8 +23,6 @@ import java.util.Collection;
 import java.util.List;
 
 import org.apache.commons.beanutils.PropertyUtils;
-import org.junit.runner.RunWith;
-import org.junit.runners.BlockJUnit4ClassRunner;
 import org.shortbrain.vaadin.container.property.PropertyMetadata;
 import org.shortbrain.vaadin.container.property.PropertyReaderAlgorithm;
 
@@ -40,7 +38,6 @@ import com.vaadin.data.Container.Hierarchical;
  * @param <BEAN>
  *            type of the beans.
  */
-@RunWith(BlockJUnit4ClassRunner.class)
 public abstract class AbstractContainerFactory<BEAN> implements
 		ContainerFactory<BEAN> {
 
@@ -60,10 +57,16 @@ public abstract class AbstractContainerFactory<BEAN> implements
 	 * @param beanClass
 	 *            the type of BEAN.
 	 * @param propertyReaderAlgorithm
-	 *            the algorithm to be used to get properties
+	 *            the algorithm to be used to get properties.
+	 * @throws IllegalArgumentException
+	 *             if beanClass or propertyReaderAlgorithm are null.
 	 */
 	public AbstractContainerFactory(Class<? extends BEAN> beanClass,
 			PropertyReaderAlgorithm propertyReaderAlgorithm) {
+		if (beanClass == null || propertyReaderAlgorithm == null) {
+			throw new IllegalArgumentException(
+					"beanClass and propertyReaderAlgorithm cannot be null.");
+		}
 		this.beanClass = beanClass;
 		this.propertyReaderAlgorithm = propertyReaderAlgorithm;
 	}
@@ -98,7 +101,7 @@ public abstract class AbstractContainerFactory<BEAN> implements
 		try {
 			// Initialize the container if null
 			if (container == null) {
-				initContainer(containerClass);
+				container = initContainer(containerClass);
 			}
 			// Property
 			List<PropertyMetadata> properties = updateProperties(container);
@@ -154,14 +157,16 @@ public abstract class AbstractContainerFactory<BEAN> implements
 	 */
 	private void populateContainer(Container container,
 			List<PropertyMetadata> properties, List<BEAN> beans) {
-		if (container instanceof Hierarchical) {
-			for (BEAN bean : beans) {
-				addHierarchicalItem((Hierarchical) container, properties, bean,
-						null);
-			}
-		} else {
-			for (BEAN bean : beans) {
-				addItem(container, properties, bean, true);
+		if (beans != null) {
+			if (container instanceof Hierarchical) {
+				for (BEAN bean : beans) {
+					addHierarchicalItem((Hierarchical) container, properties,
+							bean, null);
+				}
+			} else {
+				for (BEAN bean : beans) {
+					addItem(container, properties, bean, true);
+				}
 			}
 		}
 	}
@@ -192,10 +197,13 @@ public abstract class AbstractContainerFactory<BEAN> implements
 						metadata.getPropertyAttribute());
 			} catch (IllegalAccessException e) {
 				// TODO Auto-generated catch block
+				e.printStackTrace();
 			} catch (InvocationTargetException e) {
 				// TODO Auto-generated catch block
+				e.printStackTrace();
 			} catch (NoSuchMethodException e) {
 				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			container.getContainerProperty(itemId, propertyId).setValue(value);
 		}
