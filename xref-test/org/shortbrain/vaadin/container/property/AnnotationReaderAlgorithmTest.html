@@ -65,7 +65,7 @@
 <a class="jxr_linenumber" name="55" href="#55">55</a>  		} <strong class="jxr_keyword">catch</strong> (IllegalArgumentException e) {
 <a class="jxr_linenumber" name="56" href="#56">56</a>  			assertTrue(e instanceof IllegalArgumentException);
 <a class="jxr_linenumber" name="57" href="#57">57</a>  			assertEquals(
-<a class="jxr_linenumber" name="58" href="#58">58</a>  					<span class="jxr_string">"beanClass and its super classes are not annotated with Container."</span>,
+<a class="jxr_linenumber" name="58" href="#58">58</a>  					<span class="jxr_string">"the beanClass (or parent class) has to be annotated witch @Container."</span>,
 <a class="jxr_linenumber" name="59" href="#59">59</a>  					e.getMessage());
 <a class="jxr_linenumber" name="60" href="#60">60</a>  		}
 <a class="jxr_linenumber" name="61" href="#61">61</a>  	}
