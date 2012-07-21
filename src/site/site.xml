@@ -19,7 +19,7 @@
 	<custom>
 		<fluidoSkin>
 			<gitHub>
-				<projectId>vdemeester/vaadin-composite-layout</projectId>
+				<projectId>vdemeester/vaadin-container-utils</projectId>
 				<ribbonOrientation>right</ribbonOrientation>
 				<ribbonColor>black</ribbonColor>
 			</gitHub>
