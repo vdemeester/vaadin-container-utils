@@ -15,13 +15,13 @@
  */
 package org.shortbrain.vaadin.container.property;
 
-import java.lang.reflect.InvocationTargetException;
+import static org.shortbrain.vaadin.container.annotation.reader.ContainerBeanAnnotationReader.getMetadataByContainerType;
+
 import java.util.List;
 import java.util.Map;
 
 import org.shortbrain.vaadin.container.annotation.Container;
 import org.shortbrain.vaadin.container.annotation.ContainerType;
-import static org.shortbrain.vaadin.container.annotation.reader.ContainerBeanAnnotationReader.getMetadataByContainerType;
 
 /**
  * Implementation of {@link PropertyReaderAlgorithm} that looks for annotation
@@ -65,24 +65,16 @@ public class AnnotationReaderAlgorithm implements PropertyReaderAlgorithm {
 		if (containersMeta == null) {
 			try {
 				containersMeta = getMetadataByContainerType(beanClass);
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-			} catch (InvocationTargetException e) {
-				// TODO Auto-generated catch block
-			} catch (NoSuchMethodException e) {
-				// TODO Auto-generated catch block
-			} catch (InstantiationException e) {
-				// TODO Auto-generated catch block
-			} catch (SecurityException e) {
-				// TODO Auto-generated catch block
-			} catch (NoSuchFieldException e) {
-				// TODO Auto-generated catch block
+			} catch (Exception e) {
+				// The beanClass passed is not annotated with Container
+				throw new IllegalArgumentException(
+						"the beanClass (or parent class) has to be annotated witch @Container.", e);
 			}
 		}
 		if (containersMeta == null) {
 			// The beanClass passed is not annotated with Container
 			throw new IllegalArgumentException(
-					"the beanClass has to be annotated witch @Container.");
+					"the beanClass (or parent class) has to be annotated witch @Container.");
 		}
 		return containersMeta.get(containerType);
 	}

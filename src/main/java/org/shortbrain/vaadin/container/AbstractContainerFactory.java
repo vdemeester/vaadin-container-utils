@@ -38,7 +38,7 @@ import com.vaadin.data.Container.Hierarchical;
  * @param <BEAN>
  *            type of the beans.
  */
-public abstract class AbstractContainerFactory<BEAN> implements
+public abstract class AbstractContainerFactory<BEAN> extends
 		ContainerFactory<BEAN> {
 
 	/**
@@ -279,4 +279,6 @@ public abstract class AbstractContainerFactory<BEAN> implements
 			// e.printStackTrace();
 		}
 	}
+
+
 }

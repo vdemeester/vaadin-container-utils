@@ -263,7 +263,8 @@ public class AbstractContainerFactoryTest extends AbstractContainerUtilsTest {
 				for (int j = 0; j < 3; j++) {
 					Item childItem = c.getItem(i + j + 2);
 					Object[] childValues = new Object[] { "string" + reali + j,
-							(reali * 10) + j, null, hierarchicalBeans.get(reali).getChildren().get(j) };
+							(reali * 10) + j, null,
+							hierarchicalBeans.get(reali).getChildren().get(j) };
 					assertItem(hierarchicalBeanProperties, childValues,
 							childItem);
 				}
@@ -277,7 +278,8 @@ public class AbstractContainerFactoryTest extends AbstractContainerUtilsTest {
 	@Test
 	public void getContainerFromListListContainerClassHierarchical() {
 		SimpleHierarchicalBeanContainerAttributeFactory s = new SimpleHierarchicalBeanContainerAttributeFactory();
-		Container c = s.getContainerFromList(hierarchicalBeans, Hierarchical.class);
+		Container c = s.getContainerFromList(hierarchicalBeans,
+				Hierarchical.class);
 		assertNotNull(c);
 		assertTrue(c instanceof Hierarchical);
 		Hierarchical h = (Hierarchical) c;
@@ -296,7 +298,8 @@ public class AbstractContainerFactoryTest extends AbstractContainerUtilsTest {
 				for (int j = 0; j < 3; j++) {
 					Item childItem = c.getItem(i + j + 2);
 					Object[] childValues = new Object[] { "string" + reali + j,
-							(reali * 10) + j, null, hierarchicalBeans.get(reali).getChildren().get(j) };
+							(reali * 10) + j, null,
+							hierarchicalBeans.get(reali).getChildren().get(j) };
 					assertItem(hierarchicalBeanProperties, childValues,
 							childItem);
 				}
@@ -310,7 +313,8 @@ public class AbstractContainerFactoryTest extends AbstractContainerUtilsTest {
 	@Test
 	public void getContainerFromListContainerListContainerClassHierarchical() {
 		SimpleHierarchicalBeanContainerAttributeFactory s = new SimpleHierarchicalBeanContainerAttributeFactory();
-		Container c = s.getContainerFromList(new HierarchicalContainer(), hierarchicalBeans, Hierarchical.class);
+		Container c = s.getContainerFromList(new HierarchicalContainer(),
+				hierarchicalBeans, Hierarchical.class);
 		assertNotNull(c);
 		assertTrue(c instanceof Hierarchical);
 		assertEquals(HierarchicalContainer.class, c.getClass());
@@ -330,7 +334,8 @@ public class AbstractContainerFactoryTest extends AbstractContainerUtilsTest {
 				for (int j = 0; j < 3; j++) {
 					Item childItem = c.getItem(i + j + 2);
 					Object[] childValues = new Object[] { "string" + reali + j,
-							(reali * 10) + j, null, hierarchicalBeans.get(reali).getChildren().get(j) };
+							(reali * 10) + j, null,
+							hierarchicalBeans.get(reali).getChildren().get(j) };
 					assertItem(hierarchicalBeanProperties, childValues,
 							childItem);
 				}
