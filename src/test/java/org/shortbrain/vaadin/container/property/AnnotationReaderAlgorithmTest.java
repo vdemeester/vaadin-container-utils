@@ -55,7 +55,7 @@ public class AnnotationReaderAlgorithmTest extends AbstractContainerUtilsTest {
 		} catch (IllegalArgumentException e) {
 			assertTrue(e instanceof IllegalArgumentException);
 			assertEquals(
-					"beanClass and its super classes are not annotated with Container.",
+					"the beanClass (or parent class) has to be annotated witch @Container.",
 					e.getMessage());
 		}
 	}
