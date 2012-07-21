@@ -14,7 +14,7 @@ vaadin-container-utils is a util library to facilitate the creation of Container
   <tr>
     <td>Status</td>
     <td>master (0.1.0) : <img src="https://secure.travis-ci.org/vdemeester/vaadin-container-utils.png?branch=master" alt="Build status (master)" /><br />
-    develop (0.2.0-SNAPSHOT) : <img src="https://secure.travis-ci.org/vdemeester/vaadin-container-utils.png?branch=develop" alt="Build status (develop)" /></td>
+    develop : <img src="https://secure.travis-ci.org/vdemeester/vaadin-container-utils.png?branch=develop" alt="Build status (develop)" /></td>
   </tr>
 </table>
 
