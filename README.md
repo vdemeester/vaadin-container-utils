@@ -9,11 +9,11 @@ vaadin-container-utils is a util library to facilitate the creation of Container
   </tr>
   <tr>
     <td>Version</td>
-    <td>0.1.1-SNAPSHOT</td>
+    <td>0.1.1</td>
   </tr>
   <tr>
     <td>Status</td>
-    <td>master (0.1.0) : <img src="https://secure.travis-ci.org/vdemeester/vaadin-container-utils.png?branch=master" alt="Build status (master)" /><br />
+    <td>master : <img src="https://secure.travis-ci.org/vdemeester/vaadin-container-utils.png?branch=master" alt="Build status (master)" /><br />
     develop : <img src="https://secure.travis-ci.org/vdemeester/vaadin-container-utils.png?branch=develop" alt="Build status (develop)" /></td>
   </tr>
 </table>
