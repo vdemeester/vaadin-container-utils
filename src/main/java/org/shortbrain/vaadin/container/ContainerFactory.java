@@ -81,6 +81,14 @@ public abstract class ContainerFactory<BEAN> {
 			Class<? extends Container> containerClass);
 
 	/**
+	 * Sets the name of the bean property.
+	 *
+	 * @param name
+	 *            the name.
+	 */
+	public abstract void setBeanProperty(String name);
+
+	/**
 	 * Create a ContainerFactory of type T using a default
 	 * {@link AttributeReaderAlgorithm}.
 	 * 

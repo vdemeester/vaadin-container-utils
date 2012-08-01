@@ -42,6 +42,11 @@ public abstract class AbstractContainerFactory<BEAN> extends
 		ContainerFactory<BEAN> {
 
 	/**
+	 * Default BEAN property name.
+	 */
+	private static final String DEFAULT_BEAN_PROPERTY = "bean";
+
+	/**
 	 * Type of the bean.
 	 */
 	private Class<? extends BEAN> beanClass;
@@ -50,6 +55,11 @@ public abstract class AbstractContainerFactory<BEAN> extends
 	 * The property reader algorithm.
 	 */
 	private PropertyReaderAlgorithm propertyReaderAlgorithm;
+
+	/**
+	 * The name of the property that holds the bean.
+	 */
+	private String beanProperty = DEFAULT_BEAN_PROPERTY;
 
 	/**
 	 * Creates an AbstractContainerFactory.
@@ -133,7 +143,7 @@ public abstract class AbstractContainerFactory<BEAN> extends
 			}
 		}
 		// Add a bean property at the end.
-		addContainerProperty(container, "bean", beanClass, null);
+		addContainerProperty(container, getBeanProperty(), beanClass, null);
 		return properties;
 	}
 
@@ -208,7 +218,8 @@ public abstract class AbstractContainerFactory<BEAN> extends
 			container.getContainerProperty(itemId, propertyId).setValue(value);
 		}
 		// At the end, add the bean to the container (just in case)
-		container.getContainerProperty(itemId, "bean").setValue(bean);
+		container.getContainerProperty(itemId, getBeanProperty())
+				.setValue(bean);
 		if (introspect) {
 			Collection<BEAN> children;
 			try {
@@ -280,5 +291,24 @@ public abstract class AbstractContainerFactory<BEAN> extends
 		}
 	}
 
+	/**
+	 * Get the name of the bean property.
+	 *
+	 * @return the name of the property that holds the bean
+	 */
+	public String getBeanProperty() {
+		return beanProperty;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public void setBeanProperty(String name) {
+		if (beanProperty == null || beanProperty.equals("")) {
+			this.beanProperty = DEFAULT_BEAN_PROPERTY;
+		} else {
+			this.beanProperty = name;
+		}
+	}
 
 }

@@ -9,7 +9,7 @@ vaadin-container-utils is a util library to facilitate the creation of Container
   </tr>
   <tr>
     <td>Version</td>
-    <td>0.1.1</td>
+    <td>0.1.2-SNAPSHOT</td>
   </tr>
   <tr>
     <td>Status</td>
