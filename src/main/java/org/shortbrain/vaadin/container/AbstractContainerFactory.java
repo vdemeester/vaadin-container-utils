@@ -301,10 +301,7 @@ public abstract class AbstractContainerFactory<BEAN> extends
 	}
 
 	/**
-	 * Sets the name of the bean property.
-	 *
-	 * @param name
-	 *            the name.
+	 * {@inheritDoc}
 	 */
 	public void setBeanProperty(String name) {
 		if (beanProperty == null || beanProperty.equals("")) {
