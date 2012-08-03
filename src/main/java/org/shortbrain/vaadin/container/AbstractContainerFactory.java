@@ -88,9 +88,7 @@ public abstract class AbstractContainerFactory<BEAN> extends
 	 */
 	@Override
 	public Container getContainerFromList(Container container, List<BEAN> beans) {
-		Class<? extends Container> containerClass = (container != null) ? container
-				.getClass() : Filterable.class;
-		return getContainerFromList(container, beans, containerClass);
+		return getContainerFromCollection(container, beans);
 	}
 
 	/**
@@ -99,7 +97,7 @@ public abstract class AbstractContainerFactory<BEAN> extends
 	@Override
 	public Container getContainerFromList(List<BEAN> beans,
 			Class<? extends Container> containerClass) {
-		return getContainerFromList(null, beans, containerClass);
+		return getContainerFromCollection(beans, containerClass);
 	}
 
 	/**
@@ -108,6 +106,37 @@ public abstract class AbstractContainerFactory<BEAN> extends
 	@Override
 	public Container getContainerFromList(Container container,
 			List<BEAN> beans, Class<? extends Container> containerClass) {
+		return getContainerFromCollection(container, beans, containerClass);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * If container is null, the default type will be {@link Filterable}
+	 */
+	@Override
+	public Container getContainerFromCollection(Container container,
+			Collection<BEAN> beans) {
+		Class<? extends Container> containerClass = (container != null) ? container
+				.getClass() : Filterable.class;
+		return getContainerFromCollection(container, beans, containerClass);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Container getContainerFromCollection(Collection<BEAN> beans,
+			Class<? extends Container> containerClass) {
+		return getContainerFromCollection(null, beans, containerClass);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Container getContainerFromCollection(Container container,
+			Collection<BEAN> beans, Class<? extends Container> containerClass) {
 		try {
 			// Initialize the container if null
 			if (container == null) {
@@ -166,7 +195,7 @@ public abstract class AbstractContainerFactory<BEAN> extends
 	 *            the list of beans.
 	 */
 	private void populateContainer(Container container,
-			List<PropertyMetadata> properties, List<BEAN> beans) {
+			List<PropertyMetadata> properties, Collection<BEAN> beans) {
 		if (beans != null) {
 			if (container instanceof Hierarchical) {
 				for (BEAN bean : beans) {
@@ -293,7 +322,7 @@ public abstract class AbstractContainerFactory<BEAN> extends
 
 	/**
 	 * Get the name of the bean property.
-	 *
+	 * 
 	 * @return the name of the property that holds the bean
 	 */
 	public String getBeanProperty() {
