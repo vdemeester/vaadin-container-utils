@@ -47,8 +47,10 @@ public abstract class ContainerFactory<BEAN> {
 	 *            list of beans.
 	 * @return a container of Beans.
 	 * 
+	 * @deprecated should use getContainerFromCollection instead.
 	 * @since 0.1.0
 	 */
+	@Deprecated
 	public abstract Container getContainerFromList(Container container,
 			List<BEAN> beans);
 
@@ -66,8 +68,10 @@ public abstract class ContainerFactory<BEAN> {
 	 *            type of the container to return.
 	 * @return a container of Beans.
 	 * 
+	 * @deprecated should use getContainerFromCollection instead.
 	 * @since 0.1.0
 	 */
+	@Deprecated
 	public abstract Container getContainerFromList(Container container,
 			List<BEAN> beans, Class<? extends Container> containerClass);
 
@@ -82,8 +86,10 @@ public abstract class ContainerFactory<BEAN> {
 	 *            type of the container to return.
 	 * @return a container of Beans.
 	 * 
+	 * @deprecated should use getContainerFromCollection instead.
 	 * @since 0.1.0
 	 */
+	@Deprecated
 	public abstract Container getContainerFromList(List<BEAN> beans,
 			Class<? extends Container> containerClass);
 	
