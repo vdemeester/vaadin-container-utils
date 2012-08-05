@@ -120,7 +120,7 @@ public class ContainerFactoryTest extends AbstractContainerUtilsTest {
 				SimpleBean.class, ContainerType.EXTENDED);
 		assertNotNull(cf);
 		try {
-			cf.getContainerFromList(new IndexedContainer(),
+			cf.getContainerFromCollection(new IndexedContainer(),
 					Arrays.asList(new SimpleBean[] {}));
 			fail("should throw an IllegalArgumentException.");
 		} catch (IllegalArgumentException e) {
