@@ -26,7 +26,7 @@ import com.vaadin.data.util.IndexedContainer;
 /**
  * Util classes for vaadin Container.
  * 
- * @author Vincent Demeester <vincent+work@demeester.fr>s
+ * @author Vincent Demeester <vincent@demeester.fr>
  * 
  */
 public final class ContainerUtils {

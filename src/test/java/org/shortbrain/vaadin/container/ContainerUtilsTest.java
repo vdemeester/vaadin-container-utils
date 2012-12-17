@@ -34,7 +34,7 @@ import com.vaadin.data.util.IndexedContainer;
 /**
  * Test class for ContainerUtils.
  * 
- * @author Vincent Demeester <vincent+work@demeester.fr>
+ * @author Vincent Demeester <vincent+shortbrain@demeester.fr>
  * 
  */
 @RunWith(BlockJUnit4ClassRunner.class)
@@ -230,7 +230,7 @@ public class ContainerUtilsTest extends AbstractContainerUtilsTest {
 	/**
 	 * Inner interface that define a non-support Container interface.
 	 * 
-	 * @author Vincent Demeester <vincent+work@demeester.fr>
+	 * @author Vincent Demeester <vincent+shortbrain@demeester.fr>
 	 * 
 	 */
 	private interface NonSupportedContainer extends Container {
