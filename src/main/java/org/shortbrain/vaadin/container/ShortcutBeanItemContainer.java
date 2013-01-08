@@ -6,15 +6,12 @@ import com.vaadin.data.util.AbstractBeanContainer;
 import com.vaadin.data.util.BeanContainer;
 import com.vaadin.data.util.BeanItem;
 import com.vaadin.data.util.BeanItemContainer;
-import com.vaadin.data.util.AbstractBeanContainer.BeanIdResolver;
 
 /**
  * An extension of the {@link BeanContainer}, which adds shorcuts properties.
  * 
  * @author Vincent Demeester <vincent@shortbrain.org>
  * 
- * @param <IDTYPE>
- *            The type of the item identifier
  * @param <BEANTYPE>
  *            The type of the Bean
  * 
@@ -23,7 +20,9 @@ import com.vaadin.data.util.AbstractBeanContainer.BeanIdResolver;
  * @see ShortcutBeanContainer
  * @see BeanItemContainer
  */
-public class ShortcutBeanItemContainer<BEANTYPE> extends ShortcutBeanContainer<BEANTYPE, BEANTYPE> {
+public class ShortcutBeanItemContainer<BEANTYPE> extends ShortcutBeanContainer<BEANTYPE, BEANTYPE> implements IShortcutBeanContainer {
+
+    private static final long serialVersionUID = 4221589659162741891L;
 
     /**
      * Bean identity resolver that returns the bean itself as its item identifier.
@@ -36,6 +35,8 @@ public class ShortcutBeanItemContainer<BEANTYPE> extends ShortcutBeanContainer<B
      * @since 6.5
      */
     private static class IdentityBeanIdResolver<BT> implements BeanIdResolver<BT, BT> {
+
+        private static final long serialVersionUID = 1L;
 
         public BT getIdForBean(BT bean) {
             return bean;

@@ -25,6 +25,16 @@ public class ShortcutPropertyDescriptor<BT> implements VaadinPropertyDescriptor<
     private final String path;
     private final Class<?> propertyType;
 
+    /**
+     * Create a {@link ShortcutPropertyDescriptor}.
+     * 
+     * @param name
+     *            The given name of the property
+     * @param path
+     *            The path of the real property
+     * @param beanType
+     *            the type of bean to look for this property
+     */
     public ShortcutPropertyDescriptor(String name, String path, Class<BT> beanType) {
         this.name = name;
         this.path = path;

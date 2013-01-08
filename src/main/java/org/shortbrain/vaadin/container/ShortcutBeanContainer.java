@@ -17,21 +17,22 @@ import com.vaadin.data.util.ShortcutPropertyDescriptor;
  * 
  * @see BeanContainer
  */
-public class ShortcutBeanContainer<IDTYPE, BEANTYPE> extends com.vaadin.data.util.BeanContainer<IDTYPE, BEANTYPE> {
+public class ShortcutBeanContainer<IDTYPE, BEANTYPE> extends com.vaadin.data.util.BeanContainer<IDTYPE, BEANTYPE>
+        implements IShortcutBeanContainer {
 
     private static final long serialVersionUID = 2865701930991415312L;
 
+    /**
+     * Create a {@link ShortcutBeanContainer}
+     * 
+     * @param type
+     *            The type of the Bean
+     */
     public ShortcutBeanContainer(Class<? super BEANTYPE> type) {
         super(type);
     }
 
-    /**
-     * Adds a shortcut container property for the container, e.g. "lieuVille" for "lieu.ville"
-     * 
-     * @param propertyId
-     * @param propertyPath
-     * @return true if the property was added
-     */
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public boolean addShortcutContainerProperty(String propertyId, String propertyPath) {
         return addContainerProperty(propertyId, new ShortcutPropertyDescriptor(propertyId, propertyPath, getBeanType()));
     }
