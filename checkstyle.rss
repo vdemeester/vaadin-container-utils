@@ -2,20 +2,20 @@
 
 <rss version="0.91">
   <channel>
-    <title>vaadin-form-utils - Checkstyle report</title>
-    <link>${project.url}</link>
-    <description>vaadin-form-utils - Checkstyle report</description>
+    <title>vaadin-container-utils - Checkstyle report</title>
+    <link>http://vdemeester.github.com/vaadin-container-utils</link>
+    <description>vaadin-container-utils - Checkstyle report</description>
     <language>en-us</language>
     <copyright>&#169;2013</copyright>
     <item>
-      <title>File: 3,
-             Errors: 117,
+      <title>File: 13,
+             Errors: 1349,
              Warnings: 0,
              Infos: 0
       </title>
-            <link>${project.url}/checkstyle.html</link>
+            <link>http://vdemeester.github.com/vaadin-container-utils/checkstyle.html</link>
       <description>
-        <p>Click <a href="${project.url}/checkstyle.html">here</a> for the full Checkstyle report.</p>
+        <p>Click <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html">here</a> for the full Checkstyle report.</p>
 
         <table summary="Files" boder="1">
           <thead>
@@ -29,7 +29,7 @@
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#org.shortbrain.vaadin.form.field.LabelField.java">org/shortbrain/vaadin/form/field/LabelField.java</a>
+                  <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.ContainerUtils.java">org/shortbrain/vaadin/container/ContainerUtils.java</a>
                 </td>
                 <td>
                   0
@@ -38,12 +38,12 @@
                   0
                 </td>
                 <td>
-                  37
+                  101
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#org.shortbrain.vaadin.form.ViewBoundFormFieldFactory.java">org/shortbrain/vaadin/form/ViewBoundFormFieldFactory.java</a>
+                  <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.annotation.reader.ContainerBeanAnnotationReader.java">org/shortbrain/vaadin/container/annotation/reader/ContainerBeanAnnotationReader.java</a>
                 </td>
                 <td>
                   0
@@ -52,12 +52,12 @@
                   0
                 </td>
                 <td>
-                  42
+                  83
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#org.shortbrain.vaadin.form.ViewBoundForm.java">org/shortbrain/vaadin/form/ViewBoundForm.java</a>
+                  <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.property.PropertyReaderAlgorithm.java">org/shortbrain/vaadin/container/property/PropertyReaderAlgorithm.java</a>
                 </td>
                 <td>
                   0
@@ -66,7 +66,147 @@
                   0
                 </td>
                 <td>
-                  38
+                  7
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.AbstractContainerFactory.java">org/shortbrain/vaadin/container/AbstractContainerFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  381
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.ContainerFactory.java">org/shortbrain/vaadin/container/ContainerFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  221
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.annotation.Container.java">org/shortbrain/vaadin/container/annotation/Container.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  15
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.annotation.ContainerType.java">org/shortbrain/vaadin/container/annotation/ContainerType.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  10
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.annotation.reader.BeanAbstractAnnotationReader.java">org/shortbrain/vaadin/container/annotation/reader/BeanAbstractAnnotationReader.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  195
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.property.AttributeReaderAlgorithm.java">org/shortbrain/vaadin/container/property/AttributeReaderAlgorithm.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  123
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.annotation.Property.java">org/shortbrain/vaadin/container/annotation/Property.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  36
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.property.AnnotationReaderAlgorithm.java">org/shortbrain/vaadin/container/property/AnnotationReaderAlgorithm.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  66
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.property.GetterReaderAlgorithm.java">org/shortbrain/vaadin/container/property/GetterReaderAlgorithm.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  39
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://vdemeester.github.com/vaadin-container-utils/checkstyle.html#org.shortbrain.vaadin.container.property.PropertyMetadata.java">org/shortbrain/vaadin/container/property/PropertyMetadata.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  72
                 </td>
               </tr>
                       </tbody>

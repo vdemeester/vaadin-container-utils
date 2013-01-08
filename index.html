@@ -40,7 +40,7 @@
           <div id="banner">
         <div class="pull-left">
                                 <div id="bannerLeft">
-                <h2>vaadin-form-utils</h2>
+                <h2>vaadin-container-utils</h2>
                 </div>
                       </div>
         <div class="pull-right">  </div>
@@ -52,7 +52,7 @@
                 
             
                   <li id="publishDate">Last Published: 2013-01-08</li>
-                  <li class="divider">|</li> <li id="projectVersion">Version: 0.1.0-SNAPSHOT</li>
+                  <li class="divider">|</li> <li id="projectVersion">Version: 0.1.4-SNAPSHOT</li>
                       
                 
             
@@ -141,7 +141,36 @@
                                   
             <h2>About</h2>
 
-<p>Here is the about/index page of the maven site of vaadin-form-utils.</p>
+<p>vaadin-container-utils is a util library to facilitate the creation of Containers.</p>
+
+<p>It currently contains two main classes to use :</p>
+
+<ul>
+<li><strong>ContainerUtils</strong> : Utils class useful for common and generic operation on Container such as initialize, add a property, etc.</li>
+<li><strong>ContainerFactory</strong> : Create different type of Container from a list of Bean using different algorithm to get the list of properties.</li>
+</ul>
+
+<p>It also contains a <code>@Container</code> annotation to easily annotate your beans for behavior 
+in creating ]Vaadin](http://vaadin.com) containers. The corresponding <code>PropertyReaderAlogrithm</code>
+is then <code>AnnotationReaderAlgorithm</code>.</p>
+
+<p>The goals when creating this library is to ease the creation of different type of containers,
+while still have a maximum flexibility. Before having a <code>1.0</code> version, there is a lot of
+improvement to push (<em>Pivotable</em> containers, better customization, etc.).</p>
+
+<h3>Using</h3>
+
+<p>To use in your <a href="http://maven.apache.org">Maven</a> powered project, you'll have to add
+the temporary shortbrain repository (for nowâ¦ soon in the vaadin addon repository and/or
+the central repository)</p>
+
+<pre><code>&lt;repositories&gt;
+  &lt;repository&gt;
+    &lt;id&gt;shortbrain-releases&lt;/id&gt;
+    &lt;url&gt;https://raw.github.com/shortbrain/shortbrain-tmp-mvn-repository/master/releases&lt;/url&gt;
+  &lt;/repository&gt;
+&lt;/repositories&gt;
+</code></pre>
 
                   </div>
             </div>

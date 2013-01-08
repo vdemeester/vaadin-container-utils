@@ -40,7 +40,7 @@
           <div id="banner">
         <div class="pull-left">
                                 <div id="bannerLeft">
-                <h2>vaadin-form-utils</h2>
+                <h2>vaadin-container-utils</h2>
                 </div>
                       </div>
         <div class="pull-right">  </div>
@@ -52,7 +52,7 @@
                 
             
                   <li id="publishDate">Last Published: 2013-01-08</li>
-                  <li class="divider">|</li> <li id="projectVersion">Version: 0.1.0-SNAPSHOT</li>
+                  <li class="divider">|</li> <li id="projectVersion">Version: 0.1.4-SNAPSHOT</li>
                       
                 
             
@@ -103,7 +103,125 @@
                                   
             <h2>Usage</h2>
 
-<p>Here is a page for the usage of vaadin-form-utils</p>
+<h3>ContainerUtils</h3>
+
+<p>The main method in <code>ContainerUtils</code> is <code>initContainer</code>. It lets you instantiate a new Container based on a type.
+If the type is a concrete class, it will directly instantiate it, else it will try some predefined default.</p>
+
+<pre><code>// Concrete classes
+ContainerUtils.initContainer(IndexedContainer.class); // Instantiate an IndexedContainer
+// Interfaces
+ContainerUtils.initContainer(Filterable.class); // Instantiate a Filterable container (using IndexedContainer)
+ContainerUtils.initContainer(Hierarchical.class); // Instantiate a Hierarchical container (using HierarchicalContainer)
+</code></pre>
+
+<p>For more, please look at the <a href="/apidocs/org/shortbrain/vaadin/container/ContainerUtils.html">javadocs</a></p>
+
+<h3>ContainerFactory</h3>
+
+<p>The <code>ContainerFactory</code> class is here to simplify the creation of Containers. 
+It will handle the initialization of the Container and its properties (and update them if
+the container already contained properties), and populate it with a given list of Object (Bean).</p>
+
+<pre><code>// ContainerFactory containerFactory already defined
+// Specify an existing Container (container), and a list of MyBean
+containerFactory.getContainerFromList(container, myBeans);
+
+// Specify an existing null Container, and a list of MyBean
+Container.Filterable filterableContainer = null;
+containerFactory.getContainerFromList(filterableContainer, myBeans, Filterable.class);
+
+// Specify a list of MyBean and a type of Container
+Container.Filterable filterableContainer = null;
+containerFactory.getContainerFromList(myBeans, Filterable.class);
+</code></pre>
+
+<p>Right now, <code>ContainerFactory</code> only support <code>Filterable</code> and <code>Hierarchical</code> Vaadin containers.
+For <code>Hierarchical</code> containers, it will by default look for an attribute named <code>children</code>. In the 
+future version of this library, this behavior will be configurable).</p>
+
+<pre><code>class MyBean {
+    List&lt;MyBean&gt; children;
+    //[â¦]
+}
+// Specify a list of MyBean and a type of Container
+Container.Filterable filterableContainer = null;
+containerFactory.getContainerFromList(myBeans, Hierarchical.class);
+// This will give you a hierarchy (visible in TreeTable for example)
+</code></pre>
+
+<h3>Creation</h3>
+
+<p>There is sensible default static creation methods to get ContainerFactory instances.</p>
+
+<pre><code>// Simple default ContainerFactory
+// Looking for properties by attributes (of MyBean)
+ContainerFactory&lt;MyBean&gt; containerFactory = ContainerFactory.getByAttributes(MyBean.class);
+
+// Looking for properties by getter methods (of MyBean)
+ContainerFactory&lt;MyBean&gt; containerFactory = ContainerFactory.getByGetters(MyBean.class);
+</code></pre>
+
+<p>It also possible to passed a custom <code>PropertyReaderAlgorithm</code>, implementation that will get 
+properties out of MyBean.</p>
+
+<pre><code>// Let say TotoAlgorithm is an implementation of PropertyReaderAlgorithm
+ContainerFactory&lt;MyBean&gt; containerFactory = ContainerFactory.getByAlgorithm(MyBean.class, new TotoAlgorithm());
+</code></pre>
+
+<h4>Annotation</h4>
+
+<p>The last algorithm currently implemented is by looking up for the <code>@Container</code> annotation.
+The idea behind this annotation is to be able to specify the properties that should be created
+for the bean and how to get the values.</p>
+
+<p>For this to work, there is an <code>@Container</code> annotation that takes an array of <code>@Property</code> annotation.
+Each <code>@Property</code> defines few fields :</p>
+
+<ul>
+<li><strong>name</strong> : The name of the properties.</li>
+<li><strong>types</strong> : An array of <code>ContainerType</code> that lets defined multiple type of Container.</li>
+<li><strong>attribut</strong> : How to look for the value of the property. If not specified, it will be the same as name.</li>
+</ul>
+
+<pre>
+@Container(properties = {
+        @Property(name = "string", types = { ContainerType.EXTENDED,
+                ContainerType.RESUME }),
+        @Property(name = "number", types = { ContainerType.RESUME }, attribute = "integer") })
+private static class TestBean {
+
+    private String string;
+    private Integer integer;
+
+    public String getString() {
+        return string;
+    }
+
+    public Integer getInteger() {
+        return integer;
+    }
+}
+</pre>
+
+<p>As for other implemented algorithms, there is an easy way to get a ContainerFactory using
+this algorithm.</p>
+
+<pre><code>// Looking for properties by annotation @Container (of MyBean)
+// Using ContainerType.RESUME definition
+ContainerFactory&lt;MyBean&gt; containerFactory = ContainerFactory.getByAnnotation(MyBean.class, ContainerType.RESUME);
+// Using ContainerType.EXTENDED definition
+ContainerFactory&lt;MyBean&gt; containerFactory = ContainerFactory.getByAnnotation(MyBean.class, ContainerType.EXTENDED);
+</code></pre>
+
+<h3>Extending</h3>
+
+<p>The ContainerFactory has been designed to be easily extensible. There is two way of extending the ContainerFactory :</p>
+
+<ol>
+<li>Extends the <code>ContainerFactory</code> class. This is almost like implementing an Interface, you have almost nothing to start.</li>
+<li>Extends the <code>AbstractContainerFactory</code>, the class behind the static creation method. This is the <strong>preferred</strong> ways.</li>
+</ol>
 
                   </div>
             </div>
