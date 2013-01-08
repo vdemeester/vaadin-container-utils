@@ -92,26 +92,46 @@ public abstract class BeanAbstractAnnotationReader<T> {
 		}
 		Class<?> ret = null;
 		if (propertyAttribute.contains(".")) {
-			String fieldName = propertyAttribute.split("\\.")[0];
-			String subFieldName = propertyAttribute.split("\\.")[1];
-			Field field = getField(getOriginalBeanClass(), fieldName);
-			if (field == null) {
-				throw new NoSuchFieldException("No field " + fieldName
-						+ " for class " + getOriginalBeanClass().getName()
-						+ ".");
-			}
-			Class<?> fieldClass = field.getType();
-			ret = fieldClass.getDeclaredField(subFieldName).getType();
+		    // Recursive className detection
+		    String[] propertyAttributes = propertyAttribute.split("\\.");
+		    ret = getNestedPropertyType(propertyAttributes);
 		} else {
 			Field field = getField(getOriginalBeanClass(), propertyAttribute);
-			if (field == null) {
-				throw new NoSuchFieldException("No field " + propertyAttribute
-						+ " for class " + getOriginalBeanClass().getName()
-						+ ".");
-			}
 			ret = field.getType();
 		}
 		return ret;
+	}
+	
+	private Class<?> getNestedPropertyType(String[] propertyAttributes) throws NoSuchFieldException {
+	    Class<?> klass = getOriginalBeanClass();
+	    String fieldName = propertyAttributes[0];
+	    for (int i = 1; i < propertyAttributes.length; i++) {
+            Field nestedField = getField(klass, fieldName);
+            fieldName = propertyAttributes[i];
+            klass = nestedField.getType();
+        }
+	    Field field = getField(klass, fieldName);
+	    return field.getType();
+	}
+	
+	/**
+	 * Get the nested Field for the given class, name and nested name.
+	 * 
+	 * @param klass
+	 * @param fieldName
+	 * @param nestedFieldName
+	 * @return
+	 */
+	protected Field getNestedField(Class<?> klass, String fieldName, String nestedFieldName) throws NoSuchFieldException {
+        if (klass == null || fieldName == null || nestedFieldName == null) {
+            throw new IllegalArgumentException(
+                    "klass nor fieldName nor nestedField can be null.");
+        }
+        Field nestedField = null;
+        Field field = getField(klass, fieldName);
+        Class<?> nestedKlass = field.getType();
+        nestedField = getField(nestedKlass, nestedFieldName);
+        return nestedField;
 	}
 
 	/**
@@ -125,7 +145,7 @@ public abstract class BeanAbstractAnnotationReader<T> {
 	 * @throws IllegalArgumentException
 	 *             if klass or fieldName are null.
 	 */
-	protected Field getField(Class<?> klass, String fieldName) {
+	protected Field getField(Class<?> klass, String fieldName) throws NoSuchFieldException {
 		if (klass == null || fieldName == null) {
 			throw new IllegalArgumentException(
 					"klass or fieldName cannot be null.");
@@ -137,6 +157,11 @@ public abstract class BeanAbstractAnnotationReader<T> {
 			} catch (NoSuchFieldException e) {
 				field = getField(klass.getSuperclass(), fieldName);
 			}
+		}
+		if (field == null) {
+            throw new NoSuchFieldException("No field " + fieldName
+                    + " for class " + klass.getName()
+                    + ".");
 		}
 		return field;
 	}
