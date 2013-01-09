@@ -7,7 +7,6 @@ import java.util.Collection;
 import java.util.List;
 
 import org.apache.commons.beanutils.ConstructorUtils;
-import org.shortbrain.vaadin.container.property.HierarchicalBeanBuilder;
 import org.shortbrain.vaadin.container.property.PropertyMetadata;
 import org.shortbrain.vaadin.container.property.PropertyReaderAlgorithm;
 
@@ -64,8 +63,6 @@ public abstract class AbstractBeanContainerFactory<IDTYPE, BEANTYPE> extends Bea
      *            the type of beanContainer to instantiate
      * @param propertyId
      *            the identifier of the property to use to find item identifiers.
-     * @param beanBuilder
-     *            the hierarchical beanBuilder to use to build a {@link Hierarchical}
      */
     public AbstractBeanContainerFactory(Class<? super BEANTYPE> beanClass,
             PropertyReaderAlgorithm propertyReaderAlgorithm, Class<? extends AbstractBeanContainer> beanContainerType,
@@ -84,8 +81,6 @@ public abstract class AbstractBeanContainerFactory<IDTYPE, BEANTYPE> extends Bea
      *            the type of beanContainer to instantiate.
      * @param beanIdResolver
      *            the beanIdResolver to use to find item identifier.
-     * @param beanBuilder
-     *            the hierarchical beanBuilder to use to build a {@link Hierarchical}
      */
     public AbstractBeanContainerFactory(Class<? super BEANTYPE> beanClass,
             PropertyReaderAlgorithm propertyReaderAlgorithm, Class<? extends AbstractBeanContainer> beanContainerType,
