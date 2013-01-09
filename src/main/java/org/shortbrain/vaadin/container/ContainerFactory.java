@@ -35,7 +35,7 @@ import com.vaadin.data.Container;
  * @param <BEAN>
  *            type of the beans.
  */
-public abstract class ContainerFactory<BEAN> {
+public abstract class ContainerFactory<BEAN> implements IContainerFactory<BEAN> {
 
 	/**
 	 * Return a container of type BEAN from a list of BEAN objects. It will
