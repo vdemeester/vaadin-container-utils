@@ -123,8 +123,8 @@ public final class ContainerUtils {
     public static void addNestedContainerProperty(AbstractBeanContainer<?, ?> container,
             PropertyMetadata propertyMetadata) {
         if (propertyMetadata.getPropertyAttribute() != null) {
-            if (container instanceof ShortcutBeanContainer<?, ?>) {
-                addShortcutContainerProperty((ShortcutBeanContainer<?, ?>) container,
+            if (container instanceof IShortcutBeanContainer) {
+                addShortcutContainerProperty((IShortcutBeanContainer) container,
                         propertyMetadata.getPropertyName(), propertyMetadata.getPropertyAttribute());
             } else {
                 addNestedContainerProperty(container, propertyMetadata.getPropertyAttribute());
@@ -163,13 +163,13 @@ public final class ContainerUtils {
      * 
      * @since 0.2.0
      */
-    public static void addShortcutContainerProperty(ShortcutBeanContainer<?, ?> container,
+    public static void addShortcutContainerProperty(IShortcutBeanContainer container,
             PropertyMetadata propertyMetadata) {
         if (propertyMetadata.getPropertyAttribute() != null) {
             addShortcutContainerProperty(container, propertyMetadata.getPropertyName(),
                     propertyMetadata.getPropertyAttribute());
         } else {
-            addNestedContainerProperty(container, propertyMetadata.getPropertyName());
+            addNestedContainerProperty((AbstractBeanContainer<?, ?>) container, propertyMetadata.getPropertyName());
         }
     }
 
@@ -185,7 +185,7 @@ public final class ContainerUtils {
      * 
      * @since 0.2.0
      */
-    public static void addShortcutContainerProperty(ShortcutBeanContainer<?, ?> container, String propertyId,
+    public static void addShortcutContainerProperty(IShortcutBeanContainer container, String propertyId,
             String propertyPath) {
         if (propertyId == null || propertyPath == null) {
             throw new NullPointerException("propertyId and propertyPath cannot be null.");
