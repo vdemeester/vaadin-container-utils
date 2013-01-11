@@ -30,12 +30,12 @@ import org.shortbrain.vaadin.container.annotation.ContainerType;
  * @author Vincent Demeester <vincent@demeester.fr>
  * 
  */
-public class AnnotationReaderAlgorithm implements PropertyReaderAlgorithm {
+public class AnnotationReaderAlgorithm<T extends Enum> implements PropertyReaderAlgorithm {
 
 	/**
 	 * Container type.
 	 */
-	private final ContainerType containerType;
+	private final T containerType;
 	private Map<ContainerType, List<PropertyMetadata>> containersMeta;
 
 	/**
@@ -48,7 +48,7 @@ public class AnnotationReaderAlgorithm implements PropertyReaderAlgorithm {
 	 * @param containerType
 	 * @throws IllegalArgumentException
 	 */
-	public AnnotationReaderAlgorithm(ContainerType containerType) {
+	public AnnotationReaderAlgorithm(T containerType) {
 		if (containerType == null) {
 			throw new IllegalArgumentException("containerType cannot be null.");
 		}

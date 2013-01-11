@@ -161,8 +161,8 @@ public abstract class ContainerFactory<BEAN> implements IContainerFactory<BEAN> 
 	 *            type of the container.
 	 * @return a ContainerFactory.
 	 */
-	public final static <T> ContainerFactory<T> getByAttributes(
-			Class<? extends T> beanClass) {
+	public final static <BEANTYPE> ContainerFactory<BEANTYPE> getByAttributes(
+			Class<? extends BEANTYPE> beanClass) {
 		return getByAlgorithm(beanClass, new AttributeReaderAlgorithm());
 	}
 
@@ -176,8 +176,8 @@ public abstract class ContainerFactory<BEAN> implements IContainerFactory<BEAN> 
 	 *            type of the container.
 	 * @return a ContainerFactory.
 	 */
-	public final static <T> ContainerFactory<T> getByGetters(
-			Class<? extends T> beanClass) {
+	public final static <BEANTYPE> ContainerFactory<BEANTYPE> getByGetters(
+			Class<? extends BEANTYPE> beanClass) {
 		return getByAlgorithm(beanClass, new GetterReaderAlgorithm());
 	}
 
@@ -193,9 +193,9 @@ public abstract class ContainerFactory<BEAN> implements IContainerFactory<BEAN> 
 	 *            type of container (used by AnnotationReaderAlgorithm)
 	 * @return a ContainerFactory.
 	 */
-	public final static <T> ContainerFactory<T> getByAnnotation(
-			Class<? extends T> beanClass, ContainerType containerType) {
-		return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm(
+	public final static <BEANTYPE, ANNOTATIONTYPE extends Enum> ContainerFactory<BEANTYPE> getByAnnotation(
+			Class<? extends BEANTYPE> beanClass, ANNOTATIONTYPE containerType) {
+		return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm<ANNOTATIONTYPE>(
 				containerType));
 	}
 

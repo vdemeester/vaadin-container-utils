@@ -43,6 +43,7 @@ import com.vaadin.data.util.BeanItemContainer;
  * @see com.vaadin.data.util.BeanContainer
  * @see com.vaadin.data.util.AbstractBeanContainer
  */
+@SuppressWarnings("rawtypes")
 public abstract class BeanContainerFactory<IDTYPE, BEANTYPE> implements IContainerFactory<BEANTYPE> {
 
     /**
@@ -106,9 +107,9 @@ public abstract class BeanContainerFactory<IDTYPE, BEANTYPE> implements IContain
      * 
      * @since 0.2.0
      */
-    public final static <I, T> BeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
-            ContainerType containerType) {
-        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm(containerType), BeanItemContainer.class,
+    public final static <I, T, A extends Enum> BeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
+            A containerType) {
+        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm<A>(containerType), BeanItemContainer.class,
                 (BeanIdResolver<I, T>) null);
     }
 
@@ -128,9 +129,9 @@ public abstract class BeanContainerFactory<IDTYPE, BEANTYPE> implements IContain
      * 
      * @since 0.2.0
      */
-    public final static <I, T> BeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
-            ContainerType containerType, String propertyId) {
-        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm(containerType), BeanContainer.class, propertyId);
+    public final static <I, T, A extends Enum> BeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
+            A containerType, String propertyId) {
+        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm<A>(containerType), BeanContainer.class, propertyId);
     }
 
     /**
@@ -149,9 +150,9 @@ public abstract class BeanContainerFactory<IDTYPE, BEANTYPE> implements IContain
      * 
      * @since 0.2.0
      */
-    public final static <I, T> BeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
-            ContainerType containerType, BeanIdResolver<I, T> beanIdResolver) {
-        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm(containerType), BeanContainer.class,
+    public final static <I, T, A extends Enum> BeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
+            A containerType, BeanIdResolver<I, T> beanIdResolver) {
+        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm<A>(containerType), BeanContainer.class,
                 beanIdResolver);
     }
 
@@ -174,9 +175,9 @@ public abstract class BeanContainerFactory<IDTYPE, BEANTYPE> implements IContain
      * @since 0.2.0
      */
     @SuppressWarnings("rawtypes")
-    public final static <I, T> BeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
-            ContainerType containerType, Class<? extends AbstractBeanContainer> beanContainerType, String propertyId) {
-        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm(containerType), beanContainerType, propertyId);
+    public final static <I, T, A extends Enum> BeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
+            A containerType, Class<? extends AbstractBeanContainer> beanContainerType, String propertyId) {
+        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm<A>(containerType), beanContainerType, propertyId);
     }
 
     /**
@@ -197,10 +198,10 @@ public abstract class BeanContainerFactory<IDTYPE, BEANTYPE> implements IContain
      * @since 0.2.0
      */
     @SuppressWarnings("rawtypes")
-    public final static <I, T> BeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
-            ContainerType containerType, Class<? extends AbstractBeanContainer> beanContainerType,
+    public final static <I, T, A extends Enum> BeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
+            A containerType, Class<? extends AbstractBeanContainer> beanContainerType,
             BeanIdResolver<I, T> beanIdResolver) {
-        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm(containerType), beanContainerType,
+        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm<A>(containerType), beanContainerType,
                 beanIdResolver);
     }
 

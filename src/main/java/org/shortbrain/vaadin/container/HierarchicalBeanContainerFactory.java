@@ -107,9 +107,9 @@ public abstract class HierarchicalBeanContainerFactory<IDTYPE, BEANTYPE> impleme
      * 
      * @since 0.2.0
      */
-    public final static <I, T> HierarchicalBeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
-            ContainerType containerType) {
-        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm(containerType), HierarchicalBeanItemContainer.class, null,
+    public final static <I, T, A extends Enum> HierarchicalBeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
+            A containerType) {
+        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm<A>(containerType), HierarchicalBeanItemContainer.class, null,
                 (BeanIdResolver<I, T>) null);
     }
 
@@ -129,9 +129,9 @@ public abstract class HierarchicalBeanContainerFactory<IDTYPE, BEANTYPE> impleme
      * 
      * @since 0.2.0
      */
-    public final static <I, T> HierarchicalBeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
-            ContainerType containerType, HierarchicalBeanBuilder<I, T> beanBuilder) {
-        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm(containerType), HierarchicalBeanItemContainer.class,
+    public final static <I, T, A extends Enum> HierarchicalBeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
+            A containerType, HierarchicalBeanBuilder<I, T> beanBuilder) {
+        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm<A>(containerType), HierarchicalBeanItemContainer.class,
                 beanBuilder, (BeanIdResolver<I, T>) null);
     }
 
@@ -151,9 +151,9 @@ public abstract class HierarchicalBeanContainerFactory<IDTYPE, BEANTYPE> impleme
      * 
      * @since 0.2.0
      */
-    public final static <I, T> HierarchicalBeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
-            ContainerType containerType, String propertyId) {
-        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm(containerType), HierarchicalBeanContainer.class, null,
+    public final static <I, T, A extends Enum> HierarchicalBeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
+            A containerType, String propertyId) {
+        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm<A>(containerType), HierarchicalBeanContainer.class, null,
                 propertyId);
     }
 
@@ -175,9 +175,9 @@ public abstract class HierarchicalBeanContainerFactory<IDTYPE, BEANTYPE> impleme
      * 
      * @since 0.2.0
      */
-    public final static <I, T> HierarchicalBeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
-            ContainerType containerType, HierarchicalBeanBuilder<I, T> beanBuilder, String propertyId) {
-        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm(containerType), HierarchicalBeanContainer.class,
+    public final static <I, T, A extends Enum> HierarchicalBeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
+            A containerType, HierarchicalBeanBuilder<I, T> beanBuilder, String propertyId) {
+        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm<A>(containerType), HierarchicalBeanContainer.class,
                 beanBuilder, propertyId);
     }
 
@@ -197,9 +197,9 @@ public abstract class HierarchicalBeanContainerFactory<IDTYPE, BEANTYPE> impleme
      * 
      * @since 0.2.0
      */
-    public final static <I, T> HierarchicalBeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
-            ContainerType containerType, BeanIdResolver<I, T> beanIdResolver) {
-        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm(containerType), HierarchicalBeanContainer.class, null,
+    public final static <I, T, A extends Enum> HierarchicalBeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
+            A containerType, BeanIdResolver<I, T> beanIdResolver) {
+        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm<A>(containerType), HierarchicalBeanContainer.class, null,
                 beanIdResolver);
     }
 
@@ -221,9 +221,9 @@ public abstract class HierarchicalBeanContainerFactory<IDTYPE, BEANTYPE> impleme
      * 
      * @since 0.2.0
      */
-    public final static <I, T> HierarchicalBeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
-            ContainerType containerType, HierarchicalBeanBuilder<I, T> beanBuilder, BeanIdResolver<I, T> beanIdResolver) {
-        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm(containerType), HierarchicalBeanContainer.class,
+    public final static <I, T, A extends Enum> HierarchicalBeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
+            A containerType, HierarchicalBeanBuilder<I, T> beanBuilder, BeanIdResolver<I, T> beanIdResolver) {
+        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm<A>(containerType), HierarchicalBeanContainer.class,
                 beanBuilder, beanIdResolver);
     }
 
@@ -246,9 +246,9 @@ public abstract class HierarchicalBeanContainerFactory<IDTYPE, BEANTYPE> impleme
      * @since 0.2.0
      */
     @SuppressWarnings("rawtypes")
-    public final static <I, T> HierarchicalBeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
-            ContainerType containerType, Class<? extends AbstractBeanContainer> beanContainerType, String propertyId) {
-        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm(containerType), beanContainerType, null,
+    public final static <I, T, A extends Enum> HierarchicalBeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
+            A containerType, Class<? extends AbstractBeanContainer> beanContainerType, String propertyId) {
+        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm<A>(containerType), beanContainerType, null,
                 propertyId);
     }
 
@@ -273,10 +273,10 @@ public abstract class HierarchicalBeanContainerFactory<IDTYPE, BEANTYPE> impleme
      * @since 0.2.0
      */
     @SuppressWarnings("rawtypes")
-    public final static <I, T> HierarchicalBeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
-            ContainerType containerType, Class<? extends AbstractBeanContainer> beanContainerType,
+    public final static <I, T, A extends Enum> HierarchicalBeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
+            A containerType, Class<? extends AbstractBeanContainer> beanContainerType,
             HierarchicalBeanBuilder<I, T> beanBuilder, String propertyId) {
-        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm(containerType), beanContainerType, beanBuilder,
+        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm<A>(containerType), beanContainerType, beanBuilder,
                 propertyId);
     }
 
@@ -298,10 +298,10 @@ public abstract class HierarchicalBeanContainerFactory<IDTYPE, BEANTYPE> impleme
      * @since 0.2.0
      */
     @SuppressWarnings("rawtypes")
-    public final static <I, T> HierarchicalBeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
-            ContainerType containerType, Class<? extends AbstractBeanContainer> beanContainerType,
+    public final static <I, T, A extends Enum> HierarchicalBeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
+            A containerType, Class<? extends AbstractBeanContainer> beanContainerType,
             BeanIdResolver<I, T> beanIdResolver) {
-        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm(containerType), beanContainerType, null,
+        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm<A>(containerType), beanContainerType, null,
                 beanIdResolver);
     }
 
@@ -325,10 +325,10 @@ public abstract class HierarchicalBeanContainerFactory<IDTYPE, BEANTYPE> impleme
      * @since 0.2.0
      */
     @SuppressWarnings("rawtypes")
-    public final static <I, T> HierarchicalBeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
-            ContainerType containerType, Class<? extends AbstractBeanContainer> beanContainerType,
+    public final static <I, T, A extends Enum> HierarchicalBeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
+            A containerType, Class<? extends AbstractBeanContainer> beanContainerType,
             HierarchicalBeanBuilder<I, T> beanBuilder, BeanIdResolver<I, T> beanIdResolver) {
-        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm(containerType), beanContainerType, beanBuilder,
+        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm<A>(containerType), beanContainerType, beanBuilder,
                 beanIdResolver);
     }
 
