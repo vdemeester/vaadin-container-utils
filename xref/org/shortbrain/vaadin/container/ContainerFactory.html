@@ -45,7 +45,7 @@
 <a class="jxr_linenumber" name="35" href="#35">35</a>  <em class="jxr_javadoccomment"> * @param &lt;BEAN&gt;</em>
 <a class="jxr_linenumber" name="36" href="#36">36</a>  <em class="jxr_javadoccomment"> *            type of the beans.</em>
 <a class="jxr_linenumber" name="37" href="#37">37</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="38" href="#38">38</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">abstract</strong> <strong class="jxr_keyword">class</strong> ContainerFactory&lt;BEAN&gt; {
+<a class="jxr_linenumber" name="38" href="#38">38</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">abstract</strong> <strong class="jxr_keyword">class</strong> ContainerFactory&lt;BEAN&gt; <strong class="jxr_keyword">implements</strong> IContainerFactory&lt;BEAN&gt; {
 <a class="jxr_linenumber" name="39" href="#39">39</a>  
 <a class="jxr_linenumber" name="40" href="#40">40</a>  	<em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="41" href="#41">41</a>  <em class="jxr_javadoccomment">	 * Return a container of type BEAN from a list of BEAN objects. It will</em>
@@ -171,8 +171,8 @@
 <a class="jxr_linenumber" name="161" href="#161">161</a> <em class="jxr_javadoccomment">	 *            type of the container.</em>
 <a class="jxr_linenumber" name="162" href="#162">162</a> <em class="jxr_javadoccomment">	 * @return a ContainerFactory.</em>
 <a class="jxr_linenumber" name="163" href="#163">163</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="164" href="#164">164</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">static</strong> &lt;T&gt; ContainerFactory&lt;T&gt; getByAttributes(
-<a class="jxr_linenumber" name="165" href="#165">165</a> 			Class&lt;? <strong class="jxr_keyword">extends</strong> T&gt; beanClass) {
+<a class="jxr_linenumber" name="164" href="#164">164</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">static</strong> &lt;BEANTYPE&gt; ContainerFactory&lt;BEANTYPE&gt; getByAttributes(
+<a class="jxr_linenumber" name="165" href="#165">165</a> 			Class&lt;? <strong class="jxr_keyword">extends</strong> BEANTYPE&gt; beanClass) {
 <a class="jxr_linenumber" name="166" href="#166">166</a> 		<strong class="jxr_keyword">return</strong> getByAlgorithm(beanClass, <strong class="jxr_keyword">new</strong> <a href="../../../../org/shortbrain/vaadin/container/property/AttributeReaderAlgorithm.html">AttributeReaderAlgorithm</a>());
 <a class="jxr_linenumber" name="167" href="#167">167</a> 	}
 <a class="jxr_linenumber" name="168" href="#168">168</a> 
@@ -186,8 +186,8 @@
 <a class="jxr_linenumber" name="176" href="#176">176</a> <em class="jxr_javadoccomment">	 *            type of the container.</em>
 <a class="jxr_linenumber" name="177" href="#177">177</a> <em class="jxr_javadoccomment">	 * @return a ContainerFactory.</em>
 <a class="jxr_linenumber" name="178" href="#178">178</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="179" href="#179">179</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">static</strong> &lt;T&gt; ContainerFactory&lt;T&gt; getByGetters(
-<a class="jxr_linenumber" name="180" href="#180">180</a> 			Class&lt;? <strong class="jxr_keyword">extends</strong> T&gt; beanClass) {
+<a class="jxr_linenumber" name="179" href="#179">179</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">static</strong> &lt;BEANTYPE&gt; ContainerFactory&lt;BEANTYPE&gt; getByGetters(
+<a class="jxr_linenumber" name="180" href="#180">180</a> 			Class&lt;? <strong class="jxr_keyword">extends</strong> BEANTYPE&gt; beanClass) {
 <a class="jxr_linenumber" name="181" href="#181">181</a> 		<strong class="jxr_keyword">return</strong> getByAlgorithm(beanClass, <strong class="jxr_keyword">new</strong> <a href="../../../../org/shortbrain/vaadin/container/property/GetterReaderAlgorithm.html">GetterReaderAlgorithm</a>());
 <a class="jxr_linenumber" name="182" href="#182">182</a> 	}
 <a class="jxr_linenumber" name="183" href="#183">183</a> 
@@ -203,9 +203,9 @@
 <a class="jxr_linenumber" name="193" href="#193">193</a> <em class="jxr_javadoccomment">	 *            type of container (used by AnnotationReaderAlgorithm)</em>
 <a class="jxr_linenumber" name="194" href="#194">194</a> <em class="jxr_javadoccomment">	 * @return a ContainerFactory.</em>
 <a class="jxr_linenumber" name="195" href="#195">195</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="196" href="#196">196</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">static</strong> &lt;T&gt; ContainerFactory&lt;T&gt; getByAnnotation(
-<a class="jxr_linenumber" name="197" href="#197">197</a> 			Class&lt;? <strong class="jxr_keyword">extends</strong> T&gt; beanClass, <a href="../../../../org/shortbrain/vaadin/container/annotation/ContainerType.html">ContainerType</a> containerType) {
-<a class="jxr_linenumber" name="198" href="#198">198</a> 		<strong class="jxr_keyword">return</strong> getByAlgorithm(beanClass, <strong class="jxr_keyword">new</strong> <a href="../../../../org/shortbrain/vaadin/container/property/AnnotationReaderAlgorithm.html">AnnotationReaderAlgorithm</a>(
+<a class="jxr_linenumber" name="196" href="#196">196</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">static</strong> &lt;BEANTYPE, ANNOTATIONTYPE <strong class="jxr_keyword">extends</strong> Enum&gt; ContainerFactory&lt;BEANTYPE&gt; getByAnnotation(
+<a class="jxr_linenumber" name="197" href="#197">197</a> 			Class&lt;? <strong class="jxr_keyword">extends</strong> BEANTYPE&gt; beanClass, ANNOTATIONTYPE containerType) {
+<a class="jxr_linenumber" name="198" href="#198">198</a> 		<strong class="jxr_keyword">return</strong> getByAlgorithm(beanClass, <strong class="jxr_keyword">new</strong> AnnotationReaderAlgorithm&lt;ANNOTATIONTYPE&gt;(
 <a class="jxr_linenumber" name="199" href="#199">199</a> 				containerType));
 <a class="jxr_linenumber" name="200" href="#200">200</a> 	}
 <a class="jxr_linenumber" name="201" href="#201">201</a> 

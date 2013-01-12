@@ -1,3 +1,4 @@
+com.vaadin.data.util
 org.shortbrain.vaadin.container
 org.shortbrain.vaadin.container.annotation
 org.shortbrain.vaadin.container.annotation.reader

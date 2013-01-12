@@ -91,7 +91,7 @@
   <td class="src"><pre class="src">&nbsp;<span class="comment"> *            type of the beans.</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;37</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;<span class="comment"> */</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;38</td>  <td class="nbHitsCovered">&nbsp;25</td>  <td class="src"><pre class="src">&nbsp;<span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> ContainerFactory&lt;BEAN&gt; {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;38</td>  <td class="nbHitsCovered">&nbsp;36</td>  <td class="src"><pre class="src">&nbsp;<span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> ContainerFactory&lt;BEAN&gt; <span class="keyword">implements</span> IContainerFactory&lt;BEAN&gt; {</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;39</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;40</td>  <td class="nbHits">&nbsp;</td>
@@ -343,9 +343,9 @@
 <tr>  <td class="numLine">&nbsp;163</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;<span class="comment">         */</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;164</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> &lt;T&gt; ContainerFactory&lt;T&gt; getByAttributes(</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> &lt;BEANTYPE&gt; ContainerFactory&lt;BEANTYPE&gt; getByAttributes(</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;165</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                        Class&lt;? <span class="keyword">extends</span> T&gt; beanClass) {</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                        Class&lt;? <span class="keyword">extends</span> BEANTYPE&gt; beanClass) {</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;166</td>  <td class="nbHitsCovered">&nbsp;3</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> getByAlgorithm(beanClass, <span class="keyword">new</span> AttributeReaderAlgorithm());</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;167</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
@@ -372,9 +372,9 @@
 <tr>  <td class="numLine">&nbsp;178</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;<span class="comment">         */</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;179</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> &lt;T&gt; ContainerFactory&lt;T&gt; getByGetters(</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> &lt;BEANTYPE&gt; ContainerFactory&lt;BEANTYPE&gt; getByGetters(</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;180</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                        Class&lt;? <span class="keyword">extends</span> T&gt; beanClass) {</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                        Class&lt;? <span class="keyword">extends</span> BEANTYPE&gt; beanClass) {</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;181</td>  <td class="nbHitsCovered">&nbsp;3</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> getByAlgorithm(beanClass, <span class="keyword">new</span> GetterReaderAlgorithm());</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;182</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
@@ -405,10 +405,10 @@
 <tr>  <td class="numLine">&nbsp;195</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;<span class="comment">         */</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;196</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> &lt;T&gt; ContainerFactory&lt;T&gt; getByAnnotation(</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> &lt;BEANTYPE, ANNOTATIONTYPE <span class="keyword">extends</span> Enum&gt; ContainerFactory&lt;BEANTYPE&gt; getByAnnotation(</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;197</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                        Class&lt;? <span class="keyword">extends</span> T&gt; beanClass, ContainerType containerType) {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;198</td>  <td class="nbHitsCovered">&nbsp;8</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> getByAlgorithm(beanClass, <span class="keyword">new</span> AnnotationReaderAlgorithm(</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                        Class&lt;? <span class="keyword">extends</span> BEANTYPE&gt; beanClass, ANNOTATIONTYPE containerType) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;198</td>  <td class="nbHitsCovered">&nbsp;8</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> getByAlgorithm(beanClass, <span class="keyword">new</span> AnnotationReaderAlgorithm&lt;ANNOTATIONTYPE&gt;(</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;199</td>  <td class="nbHitsCovered">&nbsp;5</td>  <td class="src"><pre class="src">&nbsp;                                containerType));</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;200</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
@@ -447,6 +447,6 @@
   <td class="src"><pre class="src">&nbsp;}</pre></td></tr>
 </table>
 
-<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 1.9.4.1 on 08/01/13 10:24.</div>
+<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 1.9.4.1 on 12/01/13 17:30.</div>
 </body>
 </html>
