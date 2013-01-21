@@ -17,7 +17,7 @@ import com.vaadin.data.Property;
  * 
  * @see NestedPropertyDescriptor
  */
-public class ShortcutPropertyDescriptor<BT> implements VaadinPropertyDescriptor<BT> {
+public class AliasPropertyDescriptor<BT> implements VaadinPropertyDescriptor<BT> {
 
     private static final long serialVersionUID = -724628501672480236L;
 
@@ -26,7 +26,7 @@ public class ShortcutPropertyDescriptor<BT> implements VaadinPropertyDescriptor<
     private final Class<?> propertyType;
 
     /**
-     * Create a {@link ShortcutPropertyDescriptor}.
+     * Create a {@link AliasPropertyDescriptor}.
      * 
      * @param name
      *            The given name of the property
@@ -35,7 +35,7 @@ public class ShortcutPropertyDescriptor<BT> implements VaadinPropertyDescriptor<
      * @param beanType
      *            the type of bean to look for this property
      */
-    public ShortcutPropertyDescriptor(String name, String path, Class<BT> beanType) {
+    public AliasPropertyDescriptor(String name, String path, Class<BT> beanType) {
         this.name = name;
         this.path = path;
         NestedMethodProperty property = new NestedMethodProperty(beanType, path);

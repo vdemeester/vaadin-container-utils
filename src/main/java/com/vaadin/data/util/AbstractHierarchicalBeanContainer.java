@@ -5,8 +5,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.shortbrain.vaadin.container.ShortcutBeanContainer;
+import org.shortbrain.vaadin.container.AliasBeanContainer;
 import org.shortbrain.vaadin.container.property.HierarchicalBeanBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.vaadin.data.Container;
 import com.vaadin.data.Item;
@@ -17,7 +19,7 @@ import com.vaadin.data.util.filter.UnsupportedFilterException;
 
 /**
  * An extension of {@link BeanContainer} that is {@link Hierarchical}. This is the Abstract class that define common stuff for all
- * BeanContainer type ({@link BeanContainer}, {@link BeanItemContainer}, {@link ShortcutBeanContainer}, ...)
+ * BeanContainer type ({@link BeanContainer}, {@link BeanItemContainer}, {@link AliasBeanContainer}, ...)
  * 
  * <p>
  * Behind the scene it uses {@link ContainerHierarchicalWrapper}.
@@ -40,6 +42,8 @@ public abstract class AbstractHierarchicalBeanContainer<IDTYPE, BEANTYPE> extend
         implements Container.Hierarchical, Container.ItemSetChangeListener, Container.PropertySetChangeListener {
 
     private static final long serialVersionUID = 1L;
+    
+    private static final Logger log = LoggerFactory.getLogger(AbstractHierarchicalBeanContainer.class);
 
     /**
      * The {@link Hierarchical} wrapper.
@@ -71,7 +75,7 @@ public abstract class AbstractHierarchicalBeanContainer<IDTYPE, BEANTYPE> extend
 
     @Override
     public void containerPropertySetChange(PropertySetChangeEvent event) {
-        System.out.println(event);
+        log.trace("PropertySet event {}", event);
     }
 
     @Override
@@ -97,7 +101,7 @@ public abstract class AbstractHierarchicalBeanContainer<IDTYPE, BEANTYPE> extend
                 }
             }
         }
-        System.out.println(event);
+        log.trace("ItemSet event {}", event);
     }
 
     // Getter and Setter

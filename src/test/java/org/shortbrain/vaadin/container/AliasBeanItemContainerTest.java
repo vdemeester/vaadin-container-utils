@@ -4,14 +4,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
 
-import org.shortbrain.vaadin.container.ShortcutBeanContainer;
-
-import com.vaadin.data.util.AbstractBeanContainer.BeanIdResolver;
+import org.shortbrain.vaadin.container.AliasBeanItemContainer;
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(BlockJUnit4ClassRunner.class)
-public class ShortcutBeanContainerTest {
+public class AliasBeanItemContainerTest {
 
     @Test
     public void test1() {
@@ -42,13 +40,12 @@ public class ShortcutBeanContainerTest {
         BeanA a4 = new BeanA();
         a4.setB(b1);
         a4.setStringA("stringA4");
-        ShortcutBeanContainer<BeanA, BeanA> c = new ShortcutBeanContainer<BeanA, BeanA>(BeanA.class);
+        AliasBeanItemContainer< BeanA> c = new AliasBeanItemContainer<BeanA>(BeanA.class);
         c.addNestedContainerProperty("b.stringB");
         c.addNestedContainerProperty("b.c");
         c.addNestedContainerProperty("b.c.stringC");
         c.addShortcutContainerProperty("stringB", "b.stringB");
         // c.addShortcutContainerProperty("stringC", "b.c.stringC");
-        c.setBeanIdResolver(new BeanAIdResolver());
         c.addBean(a1);
         c.addBean(a2);
         c.addBean(a3);
@@ -56,15 +53,6 @@ public class ShortcutBeanContainerTest {
             assertEquals("stringB", itemId.getB().getStringB());
             assertEquals("stringB", c.getItem(itemId).getItemProperty("stringB").getValue());
         }
-    }
-
-    public static class BeanAIdResolver implements BeanIdResolver<BeanA, BeanA> {
-
-        @Override
-        public BeanA getIdForBean(BeanA bean) {
-            return bean;
-        }
-
     }
 
     public static class BeanA {

@@ -1,13 +1,13 @@
 package org.shortbrain.vaadin.container;
 
 /**
- * An interface to define the method of {@link ShortcutBeanContainer} and related.
+ * An interface to define the method of {@link AliasBeanContainer} and related.
  * 
  * @author Vincent Demeester <vincent@shortbrain.org>
  * 
  * @since 0.2.0
  */
-public interface IShortcutBeanContainer {
+public interface AliasContainer {
 
     /**
      * Adds a shortcut container property for the container, e.g. "lieuVille" for "lieu.ville"

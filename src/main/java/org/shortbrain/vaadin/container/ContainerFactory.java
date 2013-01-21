@@ -30,6 +30,8 @@ import com.vaadin.data.Container;
  * ContainerFactory abstract class that define methods to facilitate the
  * creation of Containers from a list of objects using different algorithms.
  * 
+ * TODO: Rename this class to PlainContainerFactory
+ * 
  * @author Vincent Demeester <vincent@demeester.fr>
  * 
  * @param <BEAN>

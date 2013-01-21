@@ -185,7 +185,7 @@ public abstract class AbstractBeanContainerFactory<IDTYPE, BEANTYPE> extends Bea
             } else if (propertyId != null) {
                 ((BeanContainer<IDTYPE, BEANTYPE>) container).setBeanIdProperty(propertyId);
             }
-        } else if (container instanceof BeanItemContainer<?> || container instanceof ShortcutBeanItemContainer<?>) {
+        } else if (container instanceof BeanItemContainer<?> || container instanceof AliasBeanItemContainer<?>) {
             // Nothing to do
         } else {
             // Should never happen

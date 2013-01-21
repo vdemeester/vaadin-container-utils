@@ -23,6 +23,7 @@
         <junit.version>4.11</junit.version>
         <guava.version>13.0.1</guava.version>
         <commons-beanutils.version>1.8.3</commons-beanutils.version>
+        <slf4j.version>1.7.2</slf4j.version>
     </properties>
 
     <dependencies>
@@ -49,6 +50,11 @@
             <artifactId>commons-beanutils</artifactId>
             <version>${commons-beanutils.version}</version>
         </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
     </dependencies>
     <build>
         <plugins>

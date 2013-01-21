@@ -17,10 +17,10 @@ import com.vaadin.data.util.BeanItemContainer;
  * 
  * @since 0.2.0
  * 
- * @see ShortcutBeanContainer
+ * @see AliasBeanContainer
  * @see BeanItemContainer
  */
-public class ShortcutBeanItemContainer<BEANTYPE> extends ShortcutBeanContainer<BEANTYPE, BEANTYPE> implements IShortcutBeanContainer {
+public class AliasBeanItemContainer<BEANTYPE> extends AliasBeanContainer<BEANTYPE, BEANTYPE> implements AliasContainer {
 
     private static final long serialVersionUID = 4221589659162741891L;
 
@@ -52,7 +52,7 @@ public class ShortcutBeanItemContainer<BEANTYPE> extends ShortcutBeanContainer<B
      * @throws IllegalArgumentException
      *             If {@code type} is null
      */
-    public ShortcutBeanItemContainer(Class<? super BEANTYPE> type) {
+    public AliasBeanItemContainer(Class<? super BEANTYPE> type) {
         super(type);
         super.setBeanIdResolver(new IdentityBeanIdResolver<BEANTYPE>());
     }
@@ -67,7 +67,7 @@ public class ShortcutBeanItemContainer<BEANTYPE> extends ShortcutBeanContainer<B
      * @throws IllegalArgumentException
      *             If {@code type} is null
      */
-    public ShortcutBeanItemContainer(Class<? super BEANTYPE> type, Collection<? extends BEANTYPE> collection)
+    public AliasBeanItemContainer(Class<? super BEANTYPE> type, Collection<? extends BEANTYPE> collection)
             throws IllegalArgumentException {
         super(type);
         super.setBeanIdResolver(new IdentityBeanIdResolver<BEANTYPE>());

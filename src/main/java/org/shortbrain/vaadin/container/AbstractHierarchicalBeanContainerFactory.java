@@ -198,7 +198,7 @@ public abstract class AbstractHierarchicalBeanContainerFactory<IDTYPE, BEANTYPE>
             } else if (propertyId != null) {
                 ((BeanContainer<IDTYPE, BEANTYPE>) container).setBeanIdProperty(propertyId);
             }
-        } else if (container instanceof BeanItemContainer<?> || container instanceof ShortcutBeanItemContainer<?>) {
+        } else if (container instanceof BeanItemContainer<?> || container instanceof AliasBeanItemContainer<?>) {
             // Nothing to do
         } else {
             // Should never happen
