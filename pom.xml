@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.shortbrain.vaadin</groupId>
     <artifactId>vaadin-container-utils</artifactId>
-    <version>0.2.1-SNAPSHOT</version>
+    <version>0.3.0-SNAPSHOT</version>
     <name>vaadin-container-utils</name>
     <description>Vaadin container utils</description>
     <url>http://vdemeester.github.com/vaadin-container-utils</url>
