@@ -15,10 +15,12 @@
  */
 package org.shortbrain.vaadin.container;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNotNull;
-import static junit.framework.Assert.assertTrue;
-import static junit.framework.Assert.fail;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+import java.util.Arrays;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,6 +42,50 @@ import com.vaadin.data.util.IndexedContainer;
 @RunWith(BlockJUnit4ClassRunner.class)
 public class ContainerUtilsTest extends AbstractContainerUtilsTest {
 
+    @Test
+    public void getFromPrimitiveCollectionNull() {
+        try {
+            ContainerUtils.getFromPrimitiveCollection(null);
+            fail("Should throw an NullPointerException");
+        } catch (NullPointerException e) {
+            assertTrue("Should throw an NullPointerException",
+                    e instanceof NullPointerException);
+        }
+    }
+
+    @Test
+    public void getFromPrimitiveCollectionEmpty() {
+        Container container = ContainerUtils.getFromPrimitiveCollection(Arrays.asList(new String[] { }));
+        assertEquals(0, container.size());
+    }
+
+    @Test
+    public void getFromPrimitiveCollectionString() {
+        Container container = ContainerUtils.getFromPrimitiveCollection(Arrays.asList(new String[] { "a", "b", "c"}));
+        assertEquals(3, container.size());
+        for (Object object : container.getItemIds()) {
+            assertTrue(object instanceof String);
+        }
+    }
+    
+    @Test
+    public void getFromPrimitiveCollectionInteger() {
+        Container container = ContainerUtils.getFromPrimitiveCollection(Arrays.asList(new Integer[] { 1, 2, 3}));
+        assertEquals(3, container.size());
+        for (Object object : container.getItemIds()) {
+            assertTrue(object instanceof Integer);
+        }
+    }
+    
+    @Test
+    public void getFromPrimitiveCollectionDouble() {
+        Container container = ContainerUtils.getFromPrimitiveCollection(Arrays.asList(new Double[] { 1d, 2d, 3d}));
+        assertEquals(3, container.size());
+        for (Object object : container.getItemIds()) {
+            assertTrue(object instanceof Double);
+        }
+    }
+    
 	@Test
 	public void initContainerNull() throws InstantiationException {
 		try {

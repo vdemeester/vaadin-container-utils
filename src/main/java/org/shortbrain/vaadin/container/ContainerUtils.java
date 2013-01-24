@@ -12,6 +12,8 @@
  */
 package org.shortbrain.vaadin.container;
 
+import java.util.Collection;
+
 import org.shortbrain.vaadin.container.property.PropertyMetadata;
 
 import com.vaadin.data.Container;
@@ -34,6 +36,14 @@ public final class ContainerUtils {
      * Private constructor to force the non-instantiation of this class.
      */
     private ContainerUtils() {
+    }
+    
+    public static Container getFromPrimitiveCollection(Collection<?> primitives) {
+        IndexedContainer container = new IndexedContainer();
+        for (Object o : primitives) {
+            container.addItem(o);
+        }
+        return container;
     }
 
     /**
