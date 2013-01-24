@@ -30,12 +30,14 @@ import com.vaadin.data.Container;
  * ContainerFactory abstract class that define methods to facilitate the
  * creation of Containers from a list of objects using different algorithms.
  * 
+ * TODO: Rename this class to PlainContainerFactory
+ * 
  * @author Vincent Demeester <vincent@demeester.fr>
  * 
  * @param <BEAN>
  *            type of the beans.
  */
-public abstract class ContainerFactory<BEAN> {
+public abstract class ContainerFactory<BEAN> implements IContainerFactory<BEAN> {
 
 	/**
 	 * Return a container of type BEAN from a list of BEAN objects. It will
@@ -161,8 +163,8 @@ public abstract class ContainerFactory<BEAN> {
 	 *            type of the container.
 	 * @return a ContainerFactory.
 	 */
-	public final static <T> ContainerFactory<T> getByAttributes(
-			Class<? extends T> beanClass) {
+	public final static <BEANTYPE> ContainerFactory<BEANTYPE> getByAttributes(
+			Class<? extends BEANTYPE> beanClass) {
 		return getByAlgorithm(beanClass, new AttributeReaderAlgorithm());
 	}
 
@@ -176,8 +178,8 @@ public abstract class ContainerFactory<BEAN> {
 	 *            type of the container.
 	 * @return a ContainerFactory.
 	 */
-	public final static <T> ContainerFactory<T> getByGetters(
-			Class<? extends T> beanClass) {
+	public final static <BEANTYPE> ContainerFactory<BEANTYPE> getByGetters(
+			Class<? extends BEANTYPE> beanClass) {
 		return getByAlgorithm(beanClass, new GetterReaderAlgorithm());
 	}
 
@@ -193,9 +195,9 @@ public abstract class ContainerFactory<BEAN> {
 	 *            type of container (used by AnnotationReaderAlgorithm)
 	 * @return a ContainerFactory.
 	 */
-	public final static <T> ContainerFactory<T> getByAnnotation(
-			Class<? extends T> beanClass, ContainerType containerType) {
-		return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm(
+	public final static <BEANTYPE, ANNOTATIONTYPE extends Enum> ContainerFactory<BEANTYPE> getByAnnotation(
+			Class<? extends BEANTYPE> beanClass, ANNOTATIONTYPE containerType) {
+		return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm<ANNOTATIONTYPE>(
 				containerType));
 	}
 
