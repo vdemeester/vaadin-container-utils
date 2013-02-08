@@ -1,5 +1,6 @@
 package com.vaadin.data.util;
 
+import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -45,6 +46,8 @@ public abstract class AbstractHierarchicalBeanContainer<IDTYPE, BEANTYPE> extend
     
     private static final Logger log = LoggerFactory.getLogger(AbstractHierarchicalBeanContainer.class);
 
+    private Field modelField;
+    
     /**
      * The {@link Hierarchical} wrapper.
      */
@@ -71,6 +74,16 @@ public abstract class AbstractHierarchicalBeanContainer<IDTYPE, BEANTYPE> extend
         wrapper = new ContainerHierarchicalWrapper(container);
         wrapper.addListener((Container.ItemSetChangeListener) this);
         wrapper.addListener((Container.PropertySetChangeListener) this);
+        try {
+            modelField = AbstractBeanContainer.class.getDeclaredField("model");
+            modelField.setAccessible(true);
+        } catch (SecurityException e) {
+            // TODO Auto-generated catch block
+            // e.printStackTrace();
+        } catch (NoSuchFieldException e) {
+            // TODO Auto-generated catch block
+            // e.printStackTrace();
+        }
     }
 
     @Override
@@ -437,5 +450,25 @@ public abstract class AbstractHierarchicalBeanContainer<IDTYPE, BEANTYPE> extend
     @Override
     public Collection<?> getListeners(Class<?> eventType) {
         return container.getListeners(eventType);
+    }
+
+    public boolean removeContainerProperty(String propertyId) {
+        // FIXME handle things better.
+        if (modelField != null) {
+            try {
+                Map<String, VaadinPropertyDescriptor<BEANTYPE>> model = (Map<String, VaadinPropertyDescriptor<BEANTYPE>>) modelField.get(this);
+                if (model.containsKey(propertyId)) {
+                    model.remove(propertyId);
+                }
+                return true;
+            } catch (IllegalArgumentException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        return false;
     }
 }
