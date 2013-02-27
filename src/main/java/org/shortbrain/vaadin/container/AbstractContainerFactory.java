@@ -29,6 +29,7 @@ import org.shortbrain.vaadin.container.property.PropertyReaderAlgorithm;
 import com.vaadin.data.Container;
 import com.vaadin.data.Container.Filterable;
 import com.vaadin.data.Container.Hierarchical;
+import com.vaadin.data.Item;
 
 /**
  * Default abstract implementation of {@link ContainerFactory}.
@@ -339,5 +340,10 @@ public abstract class AbstractContainerFactory<BEAN> extends
 			this.beanProperty = name;
 		}
 	}
+
+    @Override
+    public Item newItem(BEAN bean) {
+        return null;
+    }
 
 }

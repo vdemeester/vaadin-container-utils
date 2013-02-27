@@ -3,8 +3,10 @@ package org.shortbrain.vaadin.container;
 import java.io.InvalidClassException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.beanutils.ConstructorUtils;
 import org.shortbrain.vaadin.container.property.HierarchicalBeanBuilder;
@@ -12,13 +14,17 @@ import org.shortbrain.vaadin.container.property.PropertyMetadata;
 import org.shortbrain.vaadin.container.property.PropertyReaderAlgorithm;
 
 import com.vaadin.data.Container;
+import com.vaadin.data.Item;
 import com.vaadin.data.Container.Filterable;
 import com.vaadin.data.Container.Hierarchical;
 import com.vaadin.data.util.AbstractBeanContainer;
 import com.vaadin.data.util.AbstractBeanContainer.BeanIdResolver;
 import com.vaadin.data.util.AbstractHierarchicalBeanContainer;
+import com.vaadin.data.util.AliasPropertyDescriptor;
 import com.vaadin.data.util.BeanContainer;
+import com.vaadin.data.util.BeanItem;
 import com.vaadin.data.util.BeanItemContainer;
+import com.vaadin.data.util.VaadinPropertyDescriptor;
 
 import static org.shortbrain.vaadin.container.ContainerUtils.addContainerProperty;
 
@@ -42,8 +48,12 @@ public abstract class AbstractHierarchicalBeanContainerFactory<IDTYPE, BEANTYPE>
      * Type of the bean.
      */
     private final Class<? super BEANTYPE> beanClass;
+    private final Class<? extends AbstractBeanContainer> beanContainerType;
 
     private Constructor<? extends AbstractBeanContainer> containerConstructor;
+
+    private Method itemGropertyDescriptorsMethod;
+    private Constructor<? extends BeanItem> itemBeanItemConstructor;
 
     private String propertyId;
 
@@ -119,11 +129,30 @@ public abstract class AbstractHierarchicalBeanContainerFactory<IDTYPE, BEANTYPE>
             String propertyId, BeanIdResolver<IDTYPE, BEANTYPE> beanIdResolver,
             HierarchicalBeanBuilder<IDTYPE, BEANTYPE> beanBuilder) {
         this.beanClass = beanClass;
+        this.beanContainerType = beanContainerType;
         this.containerConstructor = ConstructorUtils.getAccessibleConstructor(beanContainerType, Class.class);
         this.propertyReaderAlgorithm = propertyReaderAlgorithm;
         this.propertyId = propertyId;
         this.beanIdResolver = beanIdResolver;
         this.beanBuilder = beanBuilder;
+        try {
+            Method method = BeanItem.class.getDeclaredMethod("getPropertyDescriptors", Class.class);
+            if (!method.isAccessible()) {
+                method.setAccessible(true);
+            }
+            itemGropertyDescriptorsMethod = method;
+            Constructor<? extends BeanItem> constructor = BeanItem.class.getDeclaredConstructor(Object.class, Map.class);
+            if (!constructor.isAccessible()) {
+                constructor.setAccessible(true);
+            }
+            itemBeanItemConstructor = constructor;
+        } catch (SecurityException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -184,6 +213,49 @@ public abstract class AbstractHierarchicalBeanContainerFactory<IDTYPE, BEANTYPE>
             e.printStackTrace();
         }
         return container;
+    }
+
+    @Override
+    public Item newItem(BEANTYPE bean) {
+        Item item = null;
+        if (itemGropertyDescriptorsMethod != null) {
+            try {
+                // 1. Get propertyDescriptors
+                Map<String, VaadinPropertyDescriptor<BEANTYPE>> propertyDescriptors = (Map<String, VaadinPropertyDescriptor<BEANTYPE>>) itemGropertyDescriptorsMethod
+                        .invoke(null, beanClass);
+                // 2. Update propertyDescriptors
+                if (propertyReaderAlgorithm != null) {
+                    List<PropertyMetadata> properties = propertyReaderAlgorithm.getProperties(beanClass);
+                    for (PropertyMetadata property : properties) {
+                        if (beanContainerType.isAssignableFrom(AliasContainer.class)) {
+                            if (property.getPropertyAttribute() != null) {
+                                propertyDescriptors.put(
+                                        property.getPropertyName(),
+                                        new AliasPropertyDescriptor<BEANTYPE>(property.getPropertyName(), property
+                                                .getPropertyAttribute(), (Class<BEANTYPE>) beanClass));
+                            }
+                        }
+                    }
+                }
+                // 3. Instantiate beanItem
+                item = itemBeanItemConstructor.newInstance(bean, propertyDescriptors);
+            } catch (IllegalArgumentException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        } else {
+            item = new BeanItem<BEANTYPE>(bean);
+        }
+        return item;
     }
 
     private Container initContainer(Class<? extends Container> containerClass) throws InvalidClassException, IllegalArgumentException, InstantiationException, IllegalAccessException, InvocationTargetException {

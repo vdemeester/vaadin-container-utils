@@ -20,6 +20,7 @@ import org.shortbrain.vaadin.container.property.PropertyReaderAlgorithm;
 
 import com.vaadin.data.Container;
 import com.vaadin.data.Container.Hierarchical;
+import com.vaadin.data.Item;
 import com.vaadin.data.util.AbstractBeanContainer;
 import com.vaadin.data.util.AbstractBeanContainer.BeanIdResolver;
 import com.vaadin.data.util.BeanContainer;
@@ -94,6 +95,17 @@ public abstract class BeanContainerFactory<IDTYPE, BEANTYPE> implements IContain
             Class<? extends Container> containerClass);
 
     /**
+     * Return a new Item of type BEAN.
+     * 
+     * @param bean
+     *            the bean.
+     * 
+     * @return a Item
+     * @since 0.3.0
+     */
+    public abstract Item newItem(BEANTYPE bean);
+
+    /**
      * Create a BeanContainerFactory of type T and idtype I using a default {@link AnnotationReaderAlgorithm} and the propertyId bean id
      * resolver. It uses {@link BeanItemContainer} implementation by default.
      * 
@@ -131,7 +143,8 @@ public abstract class BeanContainerFactory<IDTYPE, BEANTYPE> implements IContain
      */
     public final static <I, T, A extends Enum> BeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
             A containerType, String propertyId) {
-        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm<A>(containerType), BeanContainer.class, propertyId);
+        return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm<A>(containerType), BeanContainer.class,
+                propertyId);
     }
 
     /**
