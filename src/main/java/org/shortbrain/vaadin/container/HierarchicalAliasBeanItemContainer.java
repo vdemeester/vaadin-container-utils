@@ -63,4 +63,10 @@ public class HierarchicalAliasBeanItemContainer<BEANTYPE> extends
         return ((AliasBeanItemContainer<BEANTYPE>) getContainer()).addShortcutContainerProperty(propertyId,
                 propertyPath);
     }
+
+    @Override
+    public boolean removeContainerProperty(String propertyId) {
+        return ((AliasBeanItemContainer<BEANTYPE>) getContainer()).removeContainerProperty(propertyId);
+    }
+    
 }

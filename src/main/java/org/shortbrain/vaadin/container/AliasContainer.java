@@ -17,4 +17,12 @@ public interface AliasContainer {
      * @return true if the property was added
      */
     boolean addShortcutContainerProperty(String propertyId, String propertyPath);
+
+    /**
+     * Remove a container property for the container.
+     * 
+     * @param propertyId
+     * @return true if the property was remove
+     */
+    boolean removeContainerProperty(String propertyId);
 }

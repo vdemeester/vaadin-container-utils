@@ -3,6 +3,7 @@ package org.shortbrain.vaadin.container;
 import java.util.Collection;
 
 import com.vaadin.data.Container;
+import com.vaadin.data.Item;
 
 /**
  * ContainerFactory interface class that define methods to facilitate the
@@ -66,4 +67,15 @@ public interface IContainerFactory<BEAN> {
      */
     public abstract Container getContainerFromCollection(Collection<BEAN> beans,
             Class<? extends Container> containerClass);
+
+    /**
+     * Return a new Item of type BEAN.
+     * 
+     * @param bean
+     *            the bean.
+     * 
+     * @return a Item
+     * @since 0.3.0
+     */
+    public abstract Item newItem(BEAN bean);
 }

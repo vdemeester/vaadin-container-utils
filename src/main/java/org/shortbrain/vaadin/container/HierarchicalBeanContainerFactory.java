@@ -20,6 +20,7 @@ import org.shortbrain.vaadin.container.property.HierarchicalBeanBuilder;
 import org.shortbrain.vaadin.container.property.PropertyReaderAlgorithm;
 
 import com.vaadin.data.Container;
+import com.vaadin.data.Item;
 import com.vaadin.data.Container.Hierarchical;
 import com.vaadin.data.util.AbstractBeanContainer;
 import com.vaadin.data.util.AbstractBeanContainer.BeanIdResolver;
@@ -93,6 +94,17 @@ public abstract class HierarchicalBeanContainerFactory<IDTYPE, BEANTYPE> impleme
     public abstract Container getContainerFromCollection(Collection<BEANTYPE> beans,
             Class<? extends Container> containerClass);
 
+    /**
+     * Return a new Item of type BEAN.
+     * 
+     * @param bean
+     *            the bean.
+     * 
+     * @return a Item
+     * @since 0.3.0
+     */
+    public abstract Item newItem(BEANTYPE bean);
+    
     /**
      * Create a BeanContainerFactory of type T and idtype I using a default {@link AnnotationReaderAlgorithm} and the propertyId bean id
      * resolver. It uses {@link BeanItemContainer} implementation by default.

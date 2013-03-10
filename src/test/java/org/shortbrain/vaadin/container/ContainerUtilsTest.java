@@ -56,12 +56,14 @@ public class ContainerUtilsTest extends AbstractContainerUtilsTest {
     @Test
     public void getFromPrimitiveCollectionEmpty() {
         Container container = ContainerUtils.getFromPrimitiveCollection(Arrays.asList(new String[] { }));
+        assertNotNull(container);
         assertEquals(0, container.size());
     }
 
     @Test
     public void getFromPrimitiveCollectionString() {
         Container container = ContainerUtils.getFromPrimitiveCollection(Arrays.asList(new String[] { "a", "b", "c"}));
+        assertNotNull(container);
         assertEquals(3, container.size());
         for (Object object : container.getItemIds()) {
             assertTrue(object instanceof String);
@@ -71,6 +73,7 @@ public class ContainerUtilsTest extends AbstractContainerUtilsTest {
     @Test
     public void getFromPrimitiveCollectionInteger() {
         Container container = ContainerUtils.getFromPrimitiveCollection(Arrays.asList(new Integer[] { 1, 2, 3}));
+        assertNotNull(container);
         assertEquals(3, container.size());
         for (Object object : container.getItemIds()) {
             assertTrue(object instanceof Integer);
@@ -80,6 +83,7 @@ public class ContainerUtilsTest extends AbstractContainerUtilsTest {
     @Test
     public void getFromPrimitiveCollectionDouble() {
         Container container = ContainerUtils.getFromPrimitiveCollection(Arrays.asList(new Double[] { 1d, 2d, 3d}));
+        assertNotNull(container);
         assertEquals(3, container.size());
         for (Object object : container.getItemIds()) {
             assertTrue(object instanceof Double);

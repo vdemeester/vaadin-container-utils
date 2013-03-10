@@ -47,6 +47,7 @@ public class AliasBeanContainerTest {
         c.addNestedContainerProperty("b.c");
         c.addNestedContainerProperty("b.c.stringC");
         c.addShortcutContainerProperty("stringB", "b.stringB");
+        c.removeContainerProperty("stringA");
         // c.addShortcutContainerProperty("stringC", "b.c.stringC");
         c.setBeanIdResolver(new BeanAIdResolver());
         c.addBean(a1);
