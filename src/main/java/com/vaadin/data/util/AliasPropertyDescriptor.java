@@ -5,8 +5,12 @@ import com.vaadin.data.Property;
 /**
  * Property descriptor that is able to create shortcut property instances for a bean (nested or not).
  * 
- * The property path is specified in the dotted notation, e.g. "address.street", and can contain multiple levels of nesting. The property
- * name can be anything (but a String).
+ * <p>The property path is specified in the dotted notation, e.g. "address.street", and can contain multiple levels of nesting. The property
+ * name can be anything (but a String).</p>
+ *
+ * <p><em>Note:</em> The package com.vaadin.data is used to be able to use
+ * the NestedMethodProperty and acces to its protected attributes without
+ * doing some crazy java reflection.</p>
  * 
  * @param <BT>
  *            bean type
