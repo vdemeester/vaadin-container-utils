@@ -41,7 +41,7 @@ import com.vaadin.data.util.IndexedContainer;
 public class ContainerFactoryTest extends AbstractContainerUtilsTest {
 
 	@Test
-	public void testGetByAttributesNull() {
+	public void getByAttributeWithNullArgumentShouldThrowAnIllegalArgumentException() {
 		try {
 			ContainerFactory.getByAttributes(null);
 			fail("should throw an IllegalArgumentException");

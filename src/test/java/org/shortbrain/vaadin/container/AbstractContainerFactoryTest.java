@@ -46,7 +46,7 @@ import com.vaadin.data.util.IndexedContainer;
 public class AbstractContainerFactoryTest extends AbstractContainerFactoryTestHelper {
 
     @Before
-	public void before() {
+	public void initializeListOfBeans() {
 		beans = new LinkedList<SimpleBean>();
 		for (int i = 0; i < 10; i++) {
 			SimpleBean bean = new SimpleBean("string" + i, i);
@@ -68,7 +68,7 @@ public class AbstractContainerFactoryTest extends AbstractContainerFactoryTestHe
 	}
 
     @Test
-    public void abstractContainerFactoryNulls() {
+    public void nullArgumentForConstructorShouldThrowAnIllegalArgumentException() {
         try {
             AbstractContainerFactory<SimpleBean> a = new AbstractContainerFactory<AbstractContainerFactoryTest.SimpleBean>(
                     null, null) {
