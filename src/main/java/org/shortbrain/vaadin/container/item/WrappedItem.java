@@ -7,6 +7,16 @@ import java.util.Map;
 import com.vaadin.data.Item;
 import com.vaadin.data.Property;
 
+/**
+ * {@link Item} that can wrapped properties.
+ * 
+ * <p>
+ * Note that property wrapper are nothing more than implementation of Property
+ * </p>
+ * 
+ * @author Vincent Demeester <vdemeester@sbr.io>
+ * 
+ */
 public class WrappedItem implements Item {
 
 	private static final long serialVersionUID = -6090435499457567361L;

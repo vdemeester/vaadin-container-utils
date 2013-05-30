@@ -452,7 +452,8 @@ public abstract class AbstractHierarchicalBeanContainer<IDTYPE, BEANTYPE> extend
         return container.getListeners(eventType);
     }
 
-    public boolean removeContainerProperty(String propertyId) {
+    @SuppressWarnings("unchecked")
+	public boolean removeContainerProperty(String propertyId) {
         // FIXME handle things better.
         if (modelField != null) {
             try {
