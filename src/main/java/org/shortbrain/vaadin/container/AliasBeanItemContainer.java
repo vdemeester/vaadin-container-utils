@@ -20,7 +20,7 @@ import com.vaadin.data.util.BeanItemContainer;
  * @see AliasBeanContainer
  * @see BeanItemContainer
  */
-public class AliasBeanItemContainer<BEANTYPE> extends AliasBeanContainer<BEANTYPE, BEANTYPE> implements AliasContainer {
+public class AliasBeanItemContainer<BEANTYPE> extends AliasBeanContainer<BEANTYPE, BEANTYPE> implements AliasContainer, GeneratedPropertiesContainer<BEANTYPE> {
 
     private static final long serialVersionUID = 4221589659162741891L;
 

@@ -14,8 +14,8 @@ package org.shortbrain.vaadin.container;
 
 import java.util.Collection;
 
-import org.shortbrain.vaadin.container.annotation.ContainerType;
 import org.shortbrain.vaadin.container.property.AnnotationReaderAlgorithm;
+import org.shortbrain.vaadin.container.property.HierarchicalBeanBuilder;
 import org.shortbrain.vaadin.container.property.PropertyReaderAlgorithm;
 
 import com.vaadin.data.Container;
@@ -187,7 +187,6 @@ public abstract class BeanContainerFactory<IDTYPE, BEANTYPE> implements IContain
      * 
      * @since 0.2.0
      */
-    @SuppressWarnings("rawtypes")
     public final static <I, T, A extends Enum> BeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
             A containerType, Class<? extends AbstractBeanContainer> beanContainerType, String propertyId) {
         return getByAlgorithm(beanClass, new AnnotationReaderAlgorithm<A>(containerType), beanContainerType, propertyId);
@@ -210,7 +209,6 @@ public abstract class BeanContainerFactory<IDTYPE, BEANTYPE> implements IContain
      * 
      * @since 0.2.0
      */
-    @SuppressWarnings("rawtypes")
     public final static <I, T, A extends Enum> BeanContainerFactory<I, T> getByAnnotation(Class<? super T> beanClass,
             A containerType, Class<? extends AbstractBeanContainer> beanContainerType,
             BeanIdResolver<I, T> beanIdResolver) {
@@ -287,7 +285,6 @@ public abstract class BeanContainerFactory<IDTYPE, BEANTYPE> implements IContain
      * 
      * @since 0.2.0
      */
-    @SuppressWarnings("rawtypes")
     public final static <I, T> BeanContainerFactory<I, T> getSimple(Class<? super T> beanClass,
             Class<? extends AbstractBeanContainer> beanContainerType, BeanIdResolver<I, T> beanIdResolver) {
         return getByAlgorithm(beanClass, null, beanContainerType, beanIdResolver);
@@ -309,7 +306,6 @@ public abstract class BeanContainerFactory<IDTYPE, BEANTYPE> implements IContain
      * 
      * @since 0.2.0
      */
-    @SuppressWarnings("rawtypes")
     public final static <I, T> BeanContainerFactory<I, T> getSimple(Class<? super T> beanClass,
             Class<? extends AbstractBeanContainer> beanContainerType, String propertyId) {
         return getByAlgorithm(beanClass, null, beanContainerType, propertyId);
@@ -332,7 +328,6 @@ public abstract class BeanContainerFactory<IDTYPE, BEANTYPE> implements IContain
      * 
      * @since 0.2.0
      */
-    @SuppressWarnings("rawtypes")
     public final static <I, T> BeanContainerFactory<I, T> getByAlgorithm(Class<? super T> beanClass,
             PropertyReaderAlgorithm algorithm, Class<? extends AbstractBeanContainer> beanContainerType,
             BeanIdResolver<I, T> beanIdResolver) {
@@ -357,7 +352,6 @@ public abstract class BeanContainerFactory<IDTYPE, BEANTYPE> implements IContain
      * 
      * @since 0.2.0
      */
-    @SuppressWarnings("rawtypes")
     public final static <I, T> BeanContainerFactory<I, T> getByAlgorithm(Class<? super T> beanClass,
             PropertyReaderAlgorithm algorithm, Class<? extends AbstractBeanContainer> beanContainerType,
             String propertyId) {

@@ -18,7 +18,6 @@ package org.shortbrain.vaadin.container;
 import java.util.Collection;
 import java.util.List;
 
-import org.shortbrain.vaadin.container.annotation.ContainerType;
 import org.shortbrain.vaadin.container.property.AnnotationReaderAlgorithm;
 import org.shortbrain.vaadin.container.property.AttributeReaderAlgorithm;
 import org.shortbrain.vaadin.container.property.GetterReaderAlgorithm;

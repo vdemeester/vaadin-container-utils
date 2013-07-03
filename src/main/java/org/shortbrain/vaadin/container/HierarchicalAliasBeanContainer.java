@@ -1,6 +1,8 @@
 package org.shortbrain.vaadin.container;
 
+import org.shortbrain.vaadin.container.descriptor.GeneratedPropertyDescriptor;
 import org.shortbrain.vaadin.container.property.HierarchicalBeanBuilder;
+import org.shortbrain.vaadin.container.property.PropertyGenerator;
 
 import com.vaadin.data.util.AbstractHierarchicalBeanContainer;
 import com.vaadin.data.util.BeanContainer;
@@ -28,7 +30,7 @@ import com.vaadin.data.util.ContainerHierarchicalWrapper;
  * @see com.vaadin.data.Container.Hierarchical
  */
 public class HierarchicalAliasBeanContainer<IDTYPE, BEANTYPE> extends
-        AbstractHierarchicalBeanContainer<IDTYPE, BEANTYPE> implements AliasContainer {
+        AbstractHierarchicalBeanContainer<IDTYPE, BEANTYPE> implements AliasContainer, GeneratedPropertiesContainer<BEANTYPE> {
 
     private static final long serialVersionUID = -4643557075868038241L;
 
@@ -65,4 +67,10 @@ public class HierarchicalAliasBeanContainer<IDTYPE, BEANTYPE> extends
     public boolean addShortcutContainerProperty(String propertyId, String propertyPath) {
         return ((AliasBeanContainer<IDTYPE, BEANTYPE>) getContainer()).addShortcutContainerProperty(propertyId, propertyPath);
     }
+    
+	@Override
+	public boolean addGeneratedContainerProperty(String propertyId,
+			PropertyGenerator<?, BEANTYPE> generator) {
+		return addContainerProperty(propertyId, new GeneratedPropertyDescriptor<BEANTYPE>(propertyId, generator));
+	}
 }

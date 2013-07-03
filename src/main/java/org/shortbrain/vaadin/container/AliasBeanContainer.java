@@ -3,6 +3,9 @@ package org.shortbrain.vaadin.container;
 import java.lang.reflect.Field;
 import java.util.Map;
 
+import org.shortbrain.vaadin.container.descriptor.GeneratedPropertyDescriptor;
+import org.shortbrain.vaadin.container.property.PropertyGenerator;
+
 import com.vaadin.data.util.AbstractBeanContainer;
 import com.vaadin.data.util.AliasPropertyDescriptor;
 import com.vaadin.data.util.BeanContainer;
@@ -23,7 +26,7 @@ import com.vaadin.data.util.VaadinPropertyDescriptor;
  * @see BeanContainer
  */
 public class AliasBeanContainer<IDTYPE, BEANTYPE> extends com.vaadin.data.util.BeanContainer<IDTYPE, BEANTYPE>
-        implements AliasContainer {
+        implements AliasContainer, GeneratedPropertiesContainer<BEANTYPE> {
 
     private static final long serialVersionUID = 2865701930991415312L;
     private Field modelField;
@@ -49,9 +52,16 @@ public class AliasBeanContainer<IDTYPE, BEANTYPE> extends com.vaadin.data.util.B
     }
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
+    @Override
     public boolean addShortcutContainerProperty(String propertyId, String propertyPath) {
         return addContainerProperty(propertyId, new AliasPropertyDescriptor(propertyId, propertyPath, getBeanType()));
     }
+    
+	@Override
+	public boolean addGeneratedContainerProperty(String propertyId,
+			PropertyGenerator<?, BEANTYPE> generator) {
+		return addContainerProperty(propertyId, new GeneratedPropertyDescriptor<BEANTYPE>(propertyId, generator));
+	}
     
     public boolean removeContainerProperty(String propertyId) {
         // FIXME handle things better.
