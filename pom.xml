@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.shortbrain.vaadin</groupId>
     <artifactId>vaadin-container-utils</artifactId>
-    <version>0.3.1</version>
+    <version>0.3.2-SNAPSHOT</version>
     <name>vaadin-container-utils</name>
     <description>Vaadin container utils</description>
     <url>http://vdemeester.github.com/vaadin-container-utils</url>
@@ -19,9 +19,9 @@
     <properties>
         <github.global.server>github</github.global.server>
         <maven-fluido-skin.version>1.2.1</maven-fluido-skin.version>
-        <vaadin.version>6.8.7</vaadin.version>
+        <vaadin.version>6.8.12</vaadin.version>
         <junit.version>4.11</junit.version>
-        <guava.version>13.0.1</guava.version>
+        <guava.version>14.0.1</guava.version>
         <commons-beanutils.version>1.8.3</commons-beanutils.version>
         <slf4j.version>1.7.2</slf4j.version>
     </properties>
