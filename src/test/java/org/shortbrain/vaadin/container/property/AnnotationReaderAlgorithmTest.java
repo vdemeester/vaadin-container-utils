@@ -32,7 +32,7 @@ import org.shortbrain.vaadin.container.annotation.Container;
 import org.shortbrain.vaadin.container.annotation.ContainerType;
 import org.shortbrain.vaadin.container.annotation.Property;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({ "unused", "rawtypes", "unchecked" })
 @RunWith(BlockJUnit4ClassRunner.class)
 public class AnnotationReaderAlgorithmTest extends AbstractContainerUtilsTest {
 
