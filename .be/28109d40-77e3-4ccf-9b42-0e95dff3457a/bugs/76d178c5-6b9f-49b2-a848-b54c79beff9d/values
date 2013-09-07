@@ -1,0 +1,71 @@
+{
+
+
+
+
+
+
+    "creator": "Vincent Demeester <vincent+git@demeester.fr>", 
+
+
+
+
+
+
+    "extra_strings": [
+
+
+
+
+
+
+        "BLOCKS:cbb02025-29af-4702-904d-d440df3f47bc"
+
+
+
+
+
+
+    ], 
+
+
+
+
+
+
+    "reporter": "Vincent Demeester <vincent+git@demeester.fr>", 
+
+
+
+
+
+
+    "severity": "minor", 
+
+
+
+
+
+
+    "status": "open", 
+
+
+
+
+
+
+    "summary": "Pivot Container", 
+
+
+
+
+
+
+    "time": "Sat, 07 Sep 2013 21:00:36 +0000"
+
+
+
+
+
+
+}

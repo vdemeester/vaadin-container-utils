@@ -1,0 +1,71 @@
+{
+
+
+
+
+
+
+    "creator": "Vincent Demeester <vincent+git@demeester.fr>", 
+
+
+
+
+
+
+    "extra_strings": [
+
+
+
+
+
+
+        "BLOCKS:537713e2-53aa-43ce-8372-147d95eac87f"
+
+
+
+
+
+
+    ], 
+
+
+
+
+
+
+    "reporter": "Vincent Demeester <vincent+git@demeester.fr>", 
+
+
+
+
+
+
+    "severity": "minor", 
+
+
+
+
+
+
+    "status": "open", 
+
+
+
+
+
+
+    "summary": "GrouperContainer", 
+
+
+
+
+
+
+    "time": "Sat, 07 Sep 2013 21:01:23 +0000"
+
+
+
+
+
+
+}
