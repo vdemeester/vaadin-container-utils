@@ -9,12 +9,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.shortbrain.vaadin</groupId>
+	<groupId>org.xgbi.vaadin</groupId>
 	<artifactId>vaadin-container-utils</artifactId>
 	<version>0.4.0-SNAPSHOT</version>
 	<name>vaadin-container-utils</name>
 	<description>Vaadin container utils</description>
-	<url>http://vdemeester.github.com/vaadin-container-utils</url>
+	<url>http://xgbi.github.io/vaadin-container-utils</url>
 	<packaging>jar</packaging>
 
 	<properties>
@@ -97,7 +97,7 @@
 				<configuration>
 					<message>Creating site for ${project.version}</message>
 					<repositoryName>vaadin-container-utils</repositoryName>
-					<repositoryOwner>vdemeester</repositoryOwner>
+					<repositoryOwner>xgbi</repositoryOwner>
 				</configuration>
 				<executions>
 					<execution>
@@ -184,9 +184,9 @@
 		</license>
 	</licenses>
 	<scm>
-		<connection>scm:git:git@github.com:vdemeester/vaadin-container-utils.git</connection>
-		<developerConnection>scm:git:git@github.com:vdemeester/vaadin-container-utils.git</developerConnection>
-		<url>https://github.com/vdemeester/vaadin-container-utils</url>
+		<connection>scm:git:git@github.com:xgbi/vaadin-container-utils.git</connection>
+		<developerConnection>scm:git:git@github.com:xgbi/vaadin-container-utils.git</developerConnection>
+		<url>https://github.com/xgbi/vaadin-container-utils</url>
 		<tag>v0.1.3</tag>
 	</scm>
 	<reporting>
