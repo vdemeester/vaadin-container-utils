@@ -20,11 +20,11 @@
 	<properties>
 		<github.global.server>github</github.global.server>
 		<maven-fluido-skin.version>1.2.1</maven-fluido-skin.version>
-		<vaadin.version>7.1.0</vaadin.version>
+		<vaadin.version>7.1.5</vaadin.version>
 		<junit.version>4.11</junit.version>
-		<guava.version>14.0.1</guava.version>
+		<guava.version>15.0</guava.version>
 		<commons-beanutils.version>1.8.3</commons-beanutils.version>
-		<slf4j.version>1.7.2</slf4j.version>
+		<slf4j.version>1.7.5</slf4j.version>
 	</properties>
 
 	<dependencies>
