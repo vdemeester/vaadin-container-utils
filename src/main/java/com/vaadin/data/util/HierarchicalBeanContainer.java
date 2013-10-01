@@ -1,6 +1,6 @@
 package com.vaadin.data.util;
 
-import org.shortbrain.vaadin.container.property.HierarchicalBeanBuilder;
+import org.xgbi.vaadin.container.property.HierarchicalBeanBuilder;
 
 import com.vaadin.data.Container.Hierarchical;
 

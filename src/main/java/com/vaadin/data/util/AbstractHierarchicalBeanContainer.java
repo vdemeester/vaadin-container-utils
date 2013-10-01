@@ -6,10 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.shortbrain.vaadin.container.AliasBeanContainer;
-import org.shortbrain.vaadin.container.property.HierarchicalBeanBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.xgbi.vaadin.container.AliasBeanContainer;
+import org.xgbi.vaadin.container.property.HierarchicalBeanBuilder;
 
 import com.vaadin.data.Container;
 import com.vaadin.data.Item;
