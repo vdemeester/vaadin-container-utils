@@ -8,12 +8,12 @@
     governing permissions and limitations under the License. -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.shortbrain.vaadin</groupId>
+    <groupId>org.xgbi.vaadin</groupId>
     <artifactId>vaadin-container-utils</artifactId>
     <version>0.3.2-SNAPSHOT</version>
     <name>vaadin-container-utils</name>
     <description>Vaadin container utils</description>
-    <url>http://vdemeester.github.com/vaadin-container-utils</url>
+    <url>http://xgbi.github.io/vaadin-container-utils</url>
     <packaging>jar</packaging>
 
     <properties>
