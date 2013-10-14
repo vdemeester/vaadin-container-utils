@@ -26,6 +26,7 @@
         <slf4j.version>1.7.5</slf4j.version>
         <assertj-core.version>1.3.0</assertj-core.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <assertj-vaadin.version>0.1.0-SNAPSHOT</assertj-vaadin.version>
     </properties>
 
     <dependencies>
