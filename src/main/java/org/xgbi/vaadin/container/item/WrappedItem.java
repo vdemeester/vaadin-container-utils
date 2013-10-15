@@ -64,6 +64,10 @@ public class WrappedItem implements ItemWrapper {
 	}
 	
 	public Item getItem() {
+		if (this.item instanceof WrappedItem) {
+			// Return the real item at all time (even when wrapped in wrapped)
+			return ((WrappedItem) item).getItem();
+		}
 		return this.item;
 	}
 
