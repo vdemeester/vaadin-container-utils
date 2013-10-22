@@ -20,7 +20,7 @@ public class WrappedItem implements ItemWrapper {
 
 	public WrappedItem(Item item) {
 		checkArgument(item != null,
-				"The container to be wrapped should not be null.");
+				"The item to be wrapped should not be null.");
 		this.item = item;
 		this.wrappers = new HashMap<Object, PropertyWrapper>();
 	}
