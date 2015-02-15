@@ -24,7 +24,7 @@ It currently contains two main classes to use :
 * __ContainerFactory__ : Create different type of Container from a list of Bean using different algorithm to get the list of properties.
 
 It also contains a ``@Container`` annotation to easily annotate your beans for behavior 
-in creating ]Vaadin](http://vaadin.com) containers. The corresponding ``PropertyReaderAlogrithm``
+in creating [Vaadin](http://vaadin.com) containers. The corresponding ``PropertyReaderAlogrithm``
 is then ``AnnotationReaderAlgorithm``.
 
 The goals when creating this library is to ease the creation of different type of containers,
@@ -93,8 +93,7 @@ class MyBean {
 	//[…]
 }
 // Specify a list of MyBean and a type of Container
-Container.Filterable filterableContainer = null;
-containerFactory.getContainerFromList(myBeans, Hierarchical.class);
+Container.Filterable Hierarchical = containerFactory.getContainerFromList(myBeans, Hierarchical.class);
 // This will give you a hierarchy (visible in TreeTable for example)
 ```
 
